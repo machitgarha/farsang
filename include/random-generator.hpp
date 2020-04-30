@@ -8,7 +8,8 @@ namespace Gsler
     class RandomGenerator
     {
         public:
-            using Seed = unsigned long int;
+            using ULong = unsigned long int;
+            using Seed = ULong;
             using GeneratorType = gsl_rng_type;
 
             static const GeneratorType *const borosh13;
@@ -79,7 +80,10 @@ namespace Gsler
             RandomGenerator(const RandomGenerator &);
             ~RandomGenerator();
 
-            unsigned long int generate() const noexcept(true);
+            ULong getMin() const noexcept(true);
+            ULong getMax() const noexcept(true);
+
+            ULong generate() const noexcept(true);
 
             RandomGenerator &setSeed(const Seed);
 
@@ -99,8 +103,8 @@ namespace Gsler
             const GeneratorType *generatorType;
             Generator *generator;
 
-            const unsigned long int min;
-            const unsigned long int max;
+            const ULong min;
+            const ULong max;
     };
 }
 
