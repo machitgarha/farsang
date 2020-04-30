@@ -133,7 +133,8 @@ RandomGenerator::RandomGenerator():
     generatorType(gsl_rng_default),
     generator(this->allocate(this->generatorType)),
     min(gsl_rng_min(this->generator)),
-    max(gsl_rng_max(this->generator))
+    max(gsl_rng_max(this->generator)),
+    name(gsl_rng_name(this->generator))
 {
     // Implicit error checking in allocate()
 }
@@ -142,7 +143,8 @@ RandomGenerator::RandomGenerator(const GeneratorType *t):
     generatorType(t),
     generator(this->allocate(this->generatorType)),
     min(gsl_rng_min(this->generator)),
-    max(gsl_rng_max(this->generator))
+    max(gsl_rng_max(this->generator)),
+    name(gsl_rng_name(this->generator))
 {
     // Implicit error checking in allocate()
 }
@@ -151,7 +153,8 @@ RandomGenerator::RandomGenerator(const RandomGenerator &r):
     generatorType(r.generatorType),
     generator(this->allocate(this->generatorType)),
     min(r.min),
-    max(r.max)
+    max(r.max),
+    name(r.name)
 {
     // Implicit error checking in allocate()
 }
@@ -169,6 +172,11 @@ RandomGenerator::ULong RandomGenerator::getMin() const noexcept(true)
 RandomGenerator::ULong RandomGenerator::getMax() const noexcept(true)
 {
     return this->max;
+}
+
+const RandomGenerator::Name RandomGenerator::getName() const noexcept(true)
+{
+    return this->name;
 }
 
 RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)

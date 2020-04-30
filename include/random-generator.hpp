@@ -1,6 +1,7 @@
 #ifndef GSLER_RANDOM_GERERATOR_INC
 #define GSLER_RANDOM_GERERATOR_INC
 
+#include <string>
 #include <gsl/gsl_rng.h>
 
 namespace Gsler
@@ -11,6 +12,7 @@ namespace Gsler
             using ULong = unsigned long int;
             using Seed = ULong;
             using GeneratorType = gsl_rng_type;
+            using Name = const char *;
 
             static const GeneratorType *const borosh13;
             static const GeneratorType *const coveyou;
@@ -83,6 +85,8 @@ namespace Gsler
             ULong getMin() const noexcept(true);
             ULong getMax() const noexcept(true);
 
+            const Name getName() const noexcept(true);
+
             ULong generate() const noexcept(true);
 
             RandomGenerator &setSeed(const Seed);
@@ -104,6 +108,8 @@ namespace Gsler
 
             const ULong min;
             const ULong max;
+
+            const Name name;
     };
 }
 
