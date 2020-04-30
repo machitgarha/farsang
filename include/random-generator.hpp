@@ -100,7 +100,7 @@ namespace Gsler
             Double generateUniform() const noexcept(true);
             Double generateUniformPos() const noexcept(true);
 
-            RandomGenerator &setSeed(const Seed);
+            RandomGenerator &seed(const Seed);
 
             static void setupEnvironment();
 

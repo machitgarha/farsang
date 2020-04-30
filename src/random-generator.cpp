@@ -205,7 +205,7 @@ RandomGenerator::Double RandomGenerator::generateUniformPos() const noexcept(tru
     return gsl_rng_uniform_pos(this->generator);
 }
 
-RandomGenerator &RandomGenerator::setSeed(const Seed seed)
+RandomGenerator &RandomGenerator::seed(const Seed seed)
 {
     gsl_rng_set(this->generator, seed);
 
