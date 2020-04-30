@@ -4,6 +4,131 @@
 
 using namespace Gsler;
 
+const RandomGenerator::GeneratorType *const RandomGenerator::borosh13 =
+    gsl_rng_borosh13;
+const RandomGenerator::GeneratorType *const RandomGenerator::coveyou =
+    gsl_rng_coveyou;
+const RandomGenerator::GeneratorType *const RandomGenerator::cmrg =
+    gsl_rng_cmrg;
+const RandomGenerator::GeneratorType *const RandomGenerator::fishman18 =
+    gsl_rng_fishman18;
+const RandomGenerator::GeneratorType *const RandomGenerator::fishman20 =
+    gsl_rng_fishman20;
+const RandomGenerator::GeneratorType *const RandomGenerator::fishman2x =
+    gsl_rng_fishman2x;
+const RandomGenerator::GeneratorType *const RandomGenerator::gfsr4 =
+    gsl_rng_gfsr4;
+const RandomGenerator::GeneratorType *const RandomGenerator::knuthran =
+    gsl_rng_knuthran;
+const RandomGenerator::GeneratorType *const RandomGenerator::knuthran2 =
+    gsl_rng_knuthran2;
+const RandomGenerator::GeneratorType *const RandomGenerator::knuthran2002 =
+    gsl_rng_knuthran2002;
+const RandomGenerator::GeneratorType *const RandomGenerator::lecuyer21 =
+    gsl_rng_lecuyer21;
+const RandomGenerator::GeneratorType *const RandomGenerator::minstd =
+    gsl_rng_minstd;
+const RandomGenerator::GeneratorType *const RandomGenerator::mrg =
+    gsl_rng_mrg;
+const RandomGenerator::GeneratorType *const RandomGenerator::mt19937 =
+    gsl_rng_mt19937;
+const RandomGenerator::GeneratorType *const RandomGenerator::mt19937_1999 =
+    gsl_rng_mt19937_1999;
+const RandomGenerator::GeneratorType *const RandomGenerator::mt19937_1998 =
+    gsl_rng_mt19937_1998;
+const RandomGenerator::GeneratorType *const RandomGenerator::r250 =
+    gsl_rng_r250;
+const RandomGenerator::GeneratorType *const RandomGenerator::ran0 =
+    gsl_rng_ran0;
+const RandomGenerator::GeneratorType *const RandomGenerator::ran1 =
+    gsl_rng_ran1;
+const RandomGenerator::GeneratorType *const RandomGenerator::ran2 =
+    gsl_rng_ran2;
+const RandomGenerator::GeneratorType *const RandomGenerator::ran3 =
+    gsl_rng_ran3;
+const RandomGenerator::GeneratorType *const RandomGenerator::rand =
+    gsl_rng_rand;
+const RandomGenerator::GeneratorType *const RandomGenerator::rand48 =
+    gsl_rng_rand48;
+const RandomGenerator::GeneratorType *const RandomGenerator::random128_bsd =
+    gsl_rng_random128_bsd;
+const RandomGenerator::GeneratorType *const RandomGenerator::random128_glibc2 =
+    gsl_rng_random128_glibc2;
+const RandomGenerator::GeneratorType *const RandomGenerator::random128_libc5 =
+    gsl_rng_random128_libc5;
+const RandomGenerator::GeneratorType *const RandomGenerator::random256_bsd =
+    gsl_rng_random256_bsd;
+const RandomGenerator::GeneratorType *const RandomGenerator::random256_glibc2 =
+    gsl_rng_random256_glibc2;
+const RandomGenerator::GeneratorType *const RandomGenerator::random256_libc5 =
+    gsl_rng_random256_libc5;
+const RandomGenerator::GeneratorType *const RandomGenerator::random32_bsd =
+    gsl_rng_random32_bsd;
+const RandomGenerator::GeneratorType *const RandomGenerator::random32_glibc2 =
+    gsl_rng_random32_glibc2;
+const RandomGenerator::GeneratorType *const RandomGenerator::random32_libc5 =
+    gsl_rng_random32_libc5;
+const RandomGenerator::GeneratorType *const RandomGenerator::random64_bsd =
+    gsl_rng_random64_bsd;
+const RandomGenerator::GeneratorType *const RandomGenerator::random64_glibc2 =
+    gsl_rng_random64_glibc2;
+const RandomGenerator::GeneratorType *const RandomGenerator::random64_libc5 =
+    gsl_rng_random64_libc5;
+const RandomGenerator::GeneratorType *const RandomGenerator::random8_bsd =
+    gsl_rng_random8_bsd;
+const RandomGenerator::GeneratorType *const RandomGenerator::random8_glibc2 =
+    gsl_rng_random8_glibc2;
+const RandomGenerator::GeneratorType *const RandomGenerator::random8_libc5 =
+    gsl_rng_random8_libc5;
+const RandomGenerator::GeneratorType *const RandomGenerator::random_bsd =
+    gsl_rng_random_bsd;
+const RandomGenerator::GeneratorType *const RandomGenerator::random_glibc2 =
+    gsl_rng_random_glibc2;
+const RandomGenerator::GeneratorType *const RandomGenerator::random_libc5 =
+    gsl_rng_random_libc5;
+const RandomGenerator::GeneratorType *const RandomGenerator::randu =
+    gsl_rng_randu;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranf =
+    gsl_rng_ranf;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlux =
+    gsl_rng_ranlux;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlux389 =
+    gsl_rng_ranlux389;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlxd1 =
+    gsl_rng_ranlxd1;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlxd2 =
+    gsl_rng_ranlxd2;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlxs0 =
+    gsl_rng_ranlxs0;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlxs1 =
+    gsl_rng_ranlxs1;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranlxs2 =
+    gsl_rng_ranlxs2;
+const RandomGenerator::GeneratorType *const RandomGenerator::ranmar =
+    gsl_rng_ranmar;
+const RandomGenerator::GeneratorType *const RandomGenerator::slatec =
+    gsl_rng_slatec;
+const RandomGenerator::GeneratorType *const RandomGenerator::taus =
+    gsl_rng_taus;
+const RandomGenerator::GeneratorType *const RandomGenerator::taus2 =
+    gsl_rng_taus2;
+const RandomGenerator::GeneratorType *const RandomGenerator::taus113 =
+    gsl_rng_taus113;
+const RandomGenerator::GeneratorType *const RandomGenerator::transputer =
+    gsl_rng_transputer;
+const RandomGenerator::GeneratorType *const RandomGenerator::tt800 =
+    gsl_rng_tt800;
+const RandomGenerator::GeneratorType *const RandomGenerator::uni =
+    gsl_rng_uni;
+const RandomGenerator::GeneratorType *const RandomGenerator::uni32 =
+    gsl_rng_uni32;
+const RandomGenerator::GeneratorType *const RandomGenerator::vax =
+    gsl_rng_vax;
+const RandomGenerator::GeneratorType *const RandomGenerator::waterman14 =
+    gsl_rng_waterman14;
+const RandomGenerator::GeneratorType *const RandomGenerator::zuf =
+    gsl_rng_zuf;
+
 RandomGenerator::RandomGenerator():
     generatorType(gsl_rng_default),
     generator(this->allocate(this->generatorType)),
