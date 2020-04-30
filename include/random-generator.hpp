@@ -112,6 +112,7 @@ namespace Gsler
             static void checkErrors();
 
             static Generator *allocate(const GeneratorType *);
+            static Generator *move(const Generator *);
 
         private:
             const GeneratorType *generatorType;
