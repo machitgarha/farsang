@@ -1,5 +1,7 @@
 #include "random-generator.hpp"
 
+#include <gsl/gsl_errno.h>
+
 using namespace Gsler;
 
 RandomGenerator::RandomGenerator():
@@ -49,9 +51,37 @@ RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)
     return gsl_rng_get(this->generator);
 }
 
+RandomGenerator &RandomGenerator::setSeed(const Seed seed)
+{
+    gsl_rng_set(this->generator, seed);
+
+    RandomGenerator::checkErrors();
+
+    return *this;
+}
+
 void RandomGenerator::setupEnvironment()
 {
     gsl_rng_env_setup();
 
     RandomGenerator::checkErrors();
+}
+
+void RandomGenerator::free() noexcept(true)
+{
+    gsl_rng_free(this->generator);
+}
+
+void RandomGenerator::checkErrors()
+{
+    // TODO: Implement this
+}
+
+RandomGenerator::Generator *RandomGenerator::allocate(const GeneratorType *t)
+{
+    Generator *generator = gsl_rng_alloc(t);
+
+    RandomGenerator::checkErrors();
+
+    return generator;
 }

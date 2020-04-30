@@ -92,12 +92,11 @@ namespace Gsler
         protected:
             using Generator = gsl_rng;
 
-            Generator *allocate(const GeneratorType *);
-            Generator *move(const Generator *);
-
             void free() noexcept(true);
 
             static void checkErrors();
+
+            static Generator *allocate(const GeneratorType *);
 
         private:
             const GeneratorType *generatorType;
