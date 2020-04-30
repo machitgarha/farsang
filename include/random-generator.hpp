@@ -15,6 +15,8 @@ namespace Gsler
             using Double = double;
             using GeneratorType = gsl_rng_type;
             using Name = const char *;
+            using State = void *;
+            using Size = size_t;
 
             static const GeneratorType *const borosh13;
             static const GeneratorType *const coveyou;
@@ -89,6 +91,9 @@ namespace Gsler
 
             const Name getName() const noexcept(true);
 
+            State getState() const noexcept(true);
+            Size getSize() const noexcept(true);
+
             ULong generate() const noexcept(true);
 
             ULong generateUniform(Max) const noexcept(true);
@@ -111,11 +116,6 @@ namespace Gsler
         private:
             const GeneratorType *generatorType;
             Generator *generator;
-
-            const ULong min;
-            const ULong max;
-
-            const Name name;
     };
 }
 
