@@ -5,3 +5,6 @@ a.exe
 
 # IDE-related
 compile_flags.txt
+
+# For testing purposes
+test.cpp
