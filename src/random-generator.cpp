@@ -184,6 +184,26 @@ RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)
     return gsl_rng_get(this->generator);
 }
 
+RandomGenerator::ULong RandomGenerator::generateUniform(Max max) const
+    noexcept(true)
+{
+    ULong result = gsl_rng_uniform_int(this->generator, max);
+
+    RandomGenerator::checkErrors();
+
+    return result;
+}
+
+RandomGenerator::Double RandomGenerator::generateUniform() const noexcept(true)
+{
+    return gsl_rng_uniform(this->generator);
+}
+
+RandomGenerator::Double RandomGenerator::generateUniformPos() const noexcept(true)
+{
+    return gsl_rng_uniform_pos(this->generator);
+}
+
 RandomGenerator &RandomGenerator::setSeed(const Seed seed)
 {
     gsl_rng_set(this->generator, seed);

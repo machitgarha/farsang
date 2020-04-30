@@ -10,7 +10,9 @@ namespace Gsler
     {
         public:
             using ULong = unsigned long int;
+            using Max = ULong;
             using Seed = ULong;
+            using Double = double;
             using GeneratorType = gsl_rng_type;
             using Name = const char *;
 
@@ -88,6 +90,10 @@ namespace Gsler
             const Name getName() const noexcept(true);
 
             ULong generate() const noexcept(true);
+
+            ULong generateUniform(Max) const noexcept(true);
+            Double generateUniform() const noexcept(true);
+            Double generateUniformPos() const noexcept(true);
 
             RandomGenerator &setSeed(const Seed);
 
