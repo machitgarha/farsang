@@ -296,3 +296,27 @@ RandomGenerator::Generator *RandomGenerator::clone(const Generator *g)
 {
     return gsl_rng_clone(g);
 }
+
+FILE *operator>>(FILE *f, RandomGenerator &rGenerator)
+{
+    rGenerator.fileRead(f);
+    return f;
+}
+
+std::ifstream &operator>>(std::ifstream &f, RandomGenerator &rGenerator)
+{
+    rGenerator.fileRead(f);
+    return f;
+}
+
+FILE *operator<<(FILE *f, RandomGenerator &rGenerator)
+{
+    rGenerator.fileWrite(f);
+    return f;
+}
+
+std::ofstream &operator<<(std::ofstream &f, RandomGenerator &rGenerator)
+{
+    rGenerator.fileWrite(f);
+    return f;
+}

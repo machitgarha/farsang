@@ -129,6 +129,12 @@ namespace Gsler
             const GeneratorType *generatorType;
             Generator *generator;
     };
+
+    FILE *operator>>(FILE *, RandomGenerator &);
+    std::ifstream &operator>>(std::ifstream &, RandomGenerator &);
+
+    FILE *operator<<(FILE *, RandomGenerator &);
+    std::ofstream &operator<<(std::ofstream &, RandomGenerator &);
 }
 
 #endif // GSLER_RANDOM_GERERATOR_INC
