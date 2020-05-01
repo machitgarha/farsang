@@ -340,25 +340,25 @@ RandomGenerator::Generator *RandomGenerator::clone(const Generator *g)
 
 // Class-independent stuff
 
-FILE *operator>>(FILE *f, RandomGenerator &rGenerator)
+FILE *Gsler::operator>>(FILE *f, RandomGenerator &rGenerator)
 {
     rGenerator.fileRead(f);
     return f;
 }
 
-std::ifstream &operator>>(std::ifstream &f, RandomGenerator &rGenerator)
+std::ifstream &Gsler::operator>>(std::ifstream &f, RandomGenerator &rGenerator)
 {
     rGenerator.fileRead(f);
     return f;
 }
 
-FILE *operator<<(FILE *f, RandomGenerator &rGenerator)
+FILE *Gsler::operator<<(FILE *f, RandomGenerator &rGenerator)
 {
     rGenerator.fileWrite(f);
     return f;
 }
 
-std::ofstream &operator<<(std::ofstream &f, RandomGenerator &rGenerator)
+std::ofstream &Gsler::operator<<(std::ofstream &f, RandomGenerator &rGenerator)
 {
     rGenerator.fileWrite(f);
     return f;
