@@ -92,7 +92,7 @@ namespace Gsler
             ULong getMin() const noexcept(true);
             ULong getMax() const noexcept(true);
 
-            const Name getName() const noexcept(true);
+            Name getName() const noexcept(true);
 
             State getState() const noexcept(true);
             Size getSize() const noexcept(true);

@@ -185,7 +185,7 @@ RandomGenerator::ULong RandomGenerator::getMax() const noexcept(true)
     return gsl_rng_max(this->generator);
 }
 
-const RandomGenerator::Name RandomGenerator::getName() const noexcept(true)
+RandomGenerator::Name RandomGenerator::getName() const noexcept(true)
 {
     return gsl_rng_name(this->generator);
 }
@@ -337,6 +337,8 @@ RandomGenerator::Generator *RandomGenerator::clone(const Generator *g)
 {
     return gsl_rng_clone(g);
 }
+
+// Class-independent stuff
 
 FILE *operator>>(FILE *f, RandomGenerator &rGenerator)
 {
