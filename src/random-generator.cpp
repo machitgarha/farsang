@@ -129,7 +129,7 @@ const RandomGenerator::GeneratorType *const RandomGenerator::waterman14 =
 const RandomGenerator::GeneratorType *const RandomGenerator::zuf =
     gsl_rng_zuf;
 
-RandomGenerator::Seed defaultSeed = gsl_rng_default_seed;
+RandomGenerator::Seed RandomGenerator::defaultSeed = gsl_rng_default_seed;
 
 RandomGenerator::RandomGenerator():
     generatorType(gsl_rng_default),

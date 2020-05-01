@@ -131,8 +131,8 @@ namespace Gsler
         private:
             const GeneratorType *generatorType;
             Generator *generator;
-            Seed _seed = RandomGenerator::defaultSeed;
 
+            Seed _seed = RandomGenerator::defaultSeed;
             static Seed defaultSeed;
     };
 
