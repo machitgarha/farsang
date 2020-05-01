@@ -145,7 +145,7 @@ RandomGenerator::RandomGenerator(const GeneratorType *gType):
 
 RandomGenerator::RandomGenerator(const RandomGenerator &r):
     generatorType(r.generatorType),
-    generator(this->move(r.generator))
+    generator(this->clone(r.generator))
 {
     // Implicit error checking in allocate()
 }
@@ -240,7 +240,7 @@ RandomGenerator::Generator *RandomGenerator::allocate(const GeneratorType *t)
     return generator;
 }
 
-RandomGenerator::Generator *RandomGenerator::move(const Generator *g)
+RandomGenerator::Generator *RandomGenerator::clone(const Generator *g)
 {
     return gsl_rng_clone(g);
 }
