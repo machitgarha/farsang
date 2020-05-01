@@ -214,6 +214,58 @@ RandomGenerator &RandomGenerator::seed(const Seed seed)
     return *this;
 }
 
+RandomGenerator &RandomGenerator::fileRead(FILE *f)
+{
+    gsl_rng_fread(f, this->generator);
+
+    RandomGenerator::checkErrors();
+
+    return *this;
+}
+
+RandomGenerator &RandomGenerator::fileRead(std::ifstream &f)
+{
+    size_t size = this->generator->type->size;
+    char *state = static_cast<char *>(this->generator->state);
+
+    try {
+        f.read(state, size);
+        if (!f.good()) {
+            throw std::ios_base::failure("Could not read from file");
+        }
+    } catch (std::ios_base::failure &e) {
+        // TODO: Implement this after creating an error handler
+    }
+
+    return *this;
+}
+
+const RandomGenerator &RandomGenerator::fileWrite(FILE *f) const
+{
+    gsl_rng_fwrite(f, this->generator);
+
+    RandomGenerator::checkErrors();
+
+    return *this;
+}
+
+const RandomGenerator &RandomGenerator::fileWrite(std::ofstream &f) const
+{
+    size_t size = this->generator->type->size;
+    char *state = static_cast<char *>(this->generator->state);
+
+    try {
+        f.write(state, size);
+        if (!f.good()) {
+            throw std::ios_base::failure("Could not write to file");
+        }
+    } catch (std::ios_base::failure &e) {
+        // TODO: Implement this after creating an error handler
+    }
+
+    return *this;
+}
+
 void RandomGenerator::setupEnvironment()
 {
     gsl_rng_env_setup();

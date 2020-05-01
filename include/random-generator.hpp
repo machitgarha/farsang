@@ -2,6 +2,11 @@
 #define GSLER_RANDOM_GERERATOR_INC
 
 #include <string>
+#define private public
+#define protected public
+#include <fstream>
+#undef private
+#undef protected
 #include <gsl/gsl_rng.h>
 
 namespace Gsler
@@ -101,6 +106,12 @@ namespace Gsler
             Double generateUniformPos() const noexcept(true);
 
             RandomGenerator &seed(const Seed);
+
+            RandomGenerator &fileRead(FILE *);
+            RandomGenerator &fileRead(std::ifstream &);
+
+            const RandomGenerator &fileWrite(FILE *) const;
+            const RandomGenerator &fileWrite(std::ofstream &) const;
 
             static void setupEnvironment();
 
