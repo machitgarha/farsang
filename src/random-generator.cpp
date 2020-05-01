@@ -301,15 +301,15 @@ void RandomGenerator::setupEnvironment()
     RandomGenerator::checkErrors();
 
     // Update static variables
-    RandomGenerator::setGlobalSeed(gsl_rng_default_seed);
+    RandomGenerator::setDefaultSeed(gsl_rng_default_seed);
 }
 
-RandomGenerator::Seed RandomGenerator::getGlobalSeed() noexcept(true)
+RandomGenerator::Seed RandomGenerator::getDefaultSeed() noexcept(true)
 {
     return RandomGenerator::defaultSeed;
 }
 
-void RandomGenerator::setGlobalSeed(const Seed seed) noexcept(true)
+void RandomGenerator::setDefaultSeed(const Seed seed) noexcept(true)
 {
     RandomGenerator::defaultSeed = seed;
 }

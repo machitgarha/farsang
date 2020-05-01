@@ -115,8 +115,8 @@ namespace Gsler
 
             static void setupEnvironment();
 
-            static Seed getGlobalSeed() noexcept(true);
-            static void setGlobalSeed(const Seed) noexcept(true);
+            static Seed getDefaultSeed() noexcept(true);
+            static void setDefaultSeed(const Seed) noexcept(true);
 
         protected:
             using Generator = gsl_rng;
