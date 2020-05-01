@@ -129,6 +129,8 @@ const RandomGenerator::GeneratorType *const RandomGenerator::waterman14 =
 const RandomGenerator::GeneratorType *const RandomGenerator::zuf =
     gsl_rng_zuf;
 
+RandomGenerator::Seed defaultSeed = gsl_rng_default_seed;
+
 RandomGenerator::RandomGenerator():
     generatorType(gsl_rng_default),
     generator(this->allocate(this->generatorType))
@@ -136,10 +138,28 @@ RandomGenerator::RandomGenerator():
     // Implicit error checking in allocate()
 }
 
+RandomGenerator::RandomGenerator(const Seed seed):
+    generatorType(gsl_rng_default),
+    generator(this->allocate(this->generatorType))
+{
+    this->seed(seed);
+
+    // Implicit error checking in allocate()
+}
+
 RandomGenerator::RandomGenerator(const GeneratorType *gType):
     generatorType(gType),
     generator(this->allocate(this->generatorType))
 {
+    // Implicit error checking in allocate()
+}
+
+RandomGenerator::RandomGenerator(const GeneratorType *gType, const Seed seed):
+    generatorType(gType),
+    generator(this->allocate(this->generatorType))
+{
+    this->seed(seed);
+
     // Implicit error checking in allocate()
 }
 
@@ -178,6 +198,11 @@ RandomGenerator::State RandomGenerator::getState() const noexcept(true)
 RandomGenerator::Size RandomGenerator::getSize() const noexcept(true)
 {
     return gsl_rng_size(this->generator);
+}
+
+RandomGenerator::Seed RandomGenerator::getSeed() const noexcept(true)
+{
+    return this->seedValue;
 }
 
 RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)
@@ -271,6 +296,19 @@ void RandomGenerator::setupEnvironment()
     gsl_rng_env_setup();
 
     RandomGenerator::checkErrors();
+
+    // Update static variables
+    RandomGenerator::setGlobalSeed(gsl_rng_default_seed);
+}
+
+RandomGenerator::Seed RandomGenerator::getGlobalSeed() noexcept(true)
+{
+    return RandomGenerator::defaultSeed;
+}
+
+void RandomGenerator::setGlobalSeed(const Seed seed) noexcept(true)
+{
+    RandomGenerator::defaultSeed = seed;
 }
 
 void RandomGenerator::free() noexcept(true)

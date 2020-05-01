@@ -2,11 +2,7 @@
 #define GSLER_RANDOM_GERERATOR_INC
 
 #include <string>
-#define private public
-#define protected public
 #include <fstream>
-#undef private
-#undef protected
 #include <gsl/gsl_rng.h>
 
 namespace Gsler
@@ -87,7 +83,9 @@ namespace Gsler
             static const GeneratorType *const zuf;
 
             RandomGenerator();
+            RandomGenerator(const Seed);
             RandomGenerator(const GeneratorType *);
+            RandomGenerator(const GeneratorType *, const Seed);
             RandomGenerator(const RandomGenerator &);
             ~RandomGenerator();
 
@@ -98,6 +96,8 @@ namespace Gsler
 
             State getState() const noexcept(true);
             Size getSize() const noexcept(true);
+
+            Seed getSeed() const noexcept(true);
 
             ULong generate() const noexcept(true);
 
@@ -115,6 +115,9 @@ namespace Gsler
 
             static void setupEnvironment();
 
+            static Seed getGlobalSeed() noexcept(true);
+            static void setGlobalSeed(const Seed) noexcept(true);
+
         protected:
             using Generator = gsl_rng;
 
@@ -128,6 +131,9 @@ namespace Gsler
         private:
             const GeneratorType *generatorType;
             Generator *generator;
+            Seed _seed = RandomGenerator::defaultSeed;
+
+            static Seed defaultSeed;
     };
 
     FILE *operator>>(FILE *, RandomGenerator &);
