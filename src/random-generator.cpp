@@ -202,7 +202,7 @@ RandomGenerator::Size RandomGenerator::getSize() const noexcept(true)
 
 RandomGenerator::Seed RandomGenerator::getSeed() const noexcept(true)
 {
-    return this->seedValue;
+    return this->_seed;
 }
 
 RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)
@@ -235,6 +235,9 @@ RandomGenerator &RandomGenerator::seed(const Seed seed)
     gsl_rng_set(this->generator, seed);
 
     RandomGenerator::checkErrors();
+
+    // Should be here in the case of errors
+    this->_seed = seed;
 
     return *this;
 }
