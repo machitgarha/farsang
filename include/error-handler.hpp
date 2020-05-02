@@ -8,15 +8,22 @@ namespace Gsler
     class ErrorHandler
     {
         public:
+            using Message = const char *;
+            using FilePath = const char *;
+            using Line = int;
+            using ErrorCode = int;
+
             ErrorHandler() = delete;
             ErrorHandler(const ErrorHandler &) = delete;
             ErrorHandler(const ErrorHandler &&) = delete;
             ~ErrorHandler() = delete;
 
-            static void checkErrors();
+        protected:
+            // The functional part of the class is here
+            static void handle(const Message, const FilePath, const Line, const ErrorCode);
 
         private:
-            // For preparing before main
+            // Preparing error handler before starting main
             static const bool _prepare;
             static bool prepare() noexcept(true);
     };
