@@ -2,13 +2,13 @@
 
 using namespace Gsler::Exception;
 
-Exception::Exception(const Message &message) noexcept(true):
+Exception::Exception(const Message &message):
     std::exception(),
     message(message)
 {
 }
 
-const char *Exception::what() const noexcept(true)
+const char *Exception::what() const noexcept
 {
     return this->message.data();
 }

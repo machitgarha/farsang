@@ -11,14 +11,41 @@ namespace Gsler
         {
             public:
                 using Message = std::string;
+                using Path = std::string;
+                using Line = unsigned long int;
+                using Code = unsigned short int;
+
+                using Location = struct
+                {
+                    Path path;
+                    Line at;
+                };
+
+                static const Path PATH_UNKNOWN;
+                static const Line LINE_UNKNOWN;
+                static const Code CODE_UNKNOWN;
 
                 Exception() = delete;
-                Exception(const Message &) noexcept;
+                Exception(const Message &);
+                Exception(const Message &, const Code);
+                Exception(const Message &, const Location &);
+                Exception(const Message &, const Code, const Location &);
+                Exception(const Message &, const Path &, const Line);
+                Exception(const Message &, const Code, const Path &, const Line);
 
                 virtual const char *what() const noexcept;
+                virtual const char *where() const noexcept;
+
+                virtual const char *getMessage() const noexcept;
+                virtual const char *getPath() const noexcept;
+                virtual Code getCode() const noexcept;
+                virtual Line getLine() const noexcept;
 
             private:
                 Message message;
+                Path path = PATH_UNKNOWN;
+                Code code = CODE_UNKNOWN;
+                Line line = LINE_UNKNOWN;
         };
 
         class LogicException: public Exception
