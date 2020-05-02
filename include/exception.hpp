@@ -18,7 +18,7 @@ namespace Gsler
                 using Location = struct
                 {
                     Path path;
-                    Line at;
+                    Line line;
                 };
 
                 static const Path PATH_UNKNOWN;
@@ -41,11 +41,13 @@ namespace Gsler
                 virtual Code getCode() const noexcept;
                 virtual Line getLine() const noexcept;
 
+                // TODO: Add prepareWhat() protected
+
             private:
                 Message message;
                 Path path = PATH_UNKNOWN;
-                Code code = CODE_UNKNOWN;
                 Line line = LINE_UNKNOWN;
+                Code code = CODE_UNKNOWN;
         };
 
         class LogicException: public Exception
