@@ -1,6 +1,6 @@
 #include "exception.hpp"
 
-using namespace Gsler;
+using namespace Gsler::Exception;
 
 Exception::Exception(const Message &message) noexcept(true):
     std::exception(),
