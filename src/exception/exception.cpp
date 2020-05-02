@@ -8,13 +8,7 @@ Exception::Exception(const Message &message) noexcept(true):
 {
 }
 
-Exception::Exception(const MessageString &message) noexcept(true):
-    std::exception(),
-    message(message)
-{
-}
-
-Exception::Message Exception::what() const noexcept(true)
+const char *Exception::what() const noexcept(true)
 {
     return this->message.data();
 }

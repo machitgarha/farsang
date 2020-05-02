@@ -10,17 +10,15 @@ namespace Gsler
         class Exception: public std::exception
         {
             public:
-                using Message = const char *;
-                using MessageString = std::string;
+                using Message = std::string;
 
                 Exception() = delete;
                 Exception(const Message &) noexcept;
-                Exception(const MessageString &) noexcept;
 
-                virtual Message what() const noexcept;
+                virtual const char *what() const noexcept;
 
             private:
-                MessageString message;
+                Message message;
         };
 
         class LogicException: public Exception
