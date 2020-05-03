@@ -11,15 +11,9 @@ namespace Gsler
         {
             public:
                 using Message = std::string;
-                using Path = std::string;
+                using Path = const char *;
                 using Line = unsigned long int;
                 using Code = unsigned short int;
-
-                using Location = struct
-                {
-                    Path path;
-                    Line line;
-                };
 
                 static const Path PATH_UNKNOWN;
                 static const Line LINE_UNKNOWN;
@@ -30,10 +24,8 @@ namespace Gsler
                 Exception() = delete;
                 Exception(const Message &);
                 Exception(const Message &, const Code);
-                Exception(const Message &, const Location &);
-                Exception(const Message &, const Code, const Location &);
-                Exception(const Message &, const Path &, const Line);
-                Exception(const Message &, const Code, const Path &, const Line);
+                Exception(const Message &, const Path, const Line);
+                Exception(const Message &, const Code, const Path, const Line);
 
                 virtual const char *what() const noexcept;
                 virtual const char *where() const noexcept;
@@ -54,10 +46,10 @@ namespace Gsler
                 }
 
             private:
-                Message message;
-                Path path = PATH_UNKNOWN;
-                Line line = LINE_UNKNOWN;
-                Code code = CODE_UNKNOWN;
+                const Message message;
+                const Path path = Exception::PATH_UNKNOWN;
+                const Line line = Exception::LINE_UNKNOWN;
+                const Code code = Exception::CODE_UNKNOWN;
 
                 std::string whatStr = "";
                 std::string whereStr = "";
