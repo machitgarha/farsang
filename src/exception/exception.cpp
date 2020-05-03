@@ -87,3 +87,45 @@ bool Exception::hasCode() const noexcept
 {
     return this->code != Exception::CODE_UNKNOWN;
 }
+
+bool Exception::hasWhere() const noexcept
+{
+    return this->where() != Exception::WHERE_UNKNOWN;
+}
+
+void Exception::prepareWhere()
+{
+    // Make sure the function will call only once
+    static bool called = false;
+    if (called) {
+        return;
+    }
+
+    this->whereStr = "";
+    if (this->hasPath()) {
+        this->whereStr = this->whereStr + "in file '" + this->path + "";
+        if (this->hasLine()) {
+            this->whereStr = this->whereStr + " " + "line " + std::to_string(this->line);
+        }
+    }
+
+    called = true;
+}
+
+void Exception::prepareWhat()
+{
+    // Make sure the function will call only once
+    static bool called = false;
+    if (called) {
+        return;
+    }
+
+    this->prepareWhere();
+
+    this->whatStr = this->message;
+    if (this->hasWhere()) {
+        this->whatStr = this->whatStr + " (" + this->whereStr + ")";
+    }
+
+    called = true;
+}

@@ -39,14 +39,17 @@ namespace Gsler
                 virtual bool hasLine() const noexcept final;
                 virtual bool hasCode() const noexcept final;
 
+                virtual bool hasWhere() const noexcept final;
+
             protected:
                 virtual void prepareWhat();
                 virtual void prepareWhere();
 
                 virtual inline void prepare()
                 {
-                    Exception::prepareWhat();
-                    Exception::prepareWhere();
+                    // Note the order, we may use prepareWhere() in prepareWhat()
+                    this->prepareWhere();
+                    this->prepareWhat();
                 }
 
             private:
