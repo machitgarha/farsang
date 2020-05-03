@@ -22,11 +22,13 @@ namespace Gsler
 
                 static const Path PATH_UNKNOWN;
                 static const Line LINE_UNKNOWN;
-                static const Code CODE_UNKNOWN;
 
                 static const char *WHERE_UNKNOWN;
 
                 Exception() = delete;
+                Exception(const Exception &) = default;
+                Exception(Exception &&) = default;
+
                 Exception(const Message &);
                 Exception(const Message &, const Code);
                 Exception(const Message &, const Path, const Line);
@@ -42,9 +44,10 @@ namespace Gsler
 
                 virtual bool hasPath() const noexcept final;
                 virtual bool hasLine() const noexcept final;
-                virtual bool hasCode() const noexcept final;
 
                 virtual bool hasWhere() const noexcept final;
+
+                static const Code defaultCode = 1;
 
             protected:
                 virtual void prepareWhat();
@@ -61,7 +64,7 @@ namespace Gsler
                 const Message message;
                 const Path path = Exception::PATH_UNKNOWN;
                 const Line line = Exception::LINE_UNKNOWN;
-                const Code code = Exception::CODE_UNKNOWN;
+                const Code code = Exception::defaultCode;
 
                 std::string whatStr = "";
                 std::string whereStr = "";
