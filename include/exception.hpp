@@ -3,6 +3,11 @@
 
 #include <stdexcept>
 
+#define EXCEPTION(...)\
+    Gsler::Exception::Exception(__VA_ARGS__, __FILE__, __LINE__)
+#define LOGIC_EXCEPTION(...)\
+    Gsler::Exception::LogicException(__VA_ARGS__, __FILE__, __LINE__)
+
 namespace Gsler
 {
     namespace Exception
