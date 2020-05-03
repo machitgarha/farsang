@@ -69,13 +69,6 @@ namespace Gsler
                 std::string whatStr = "";
                 std::string whereStr = "";
         };
-
-        class LogicException: public Exception
-        {
-            public:
-                LogicException() = delete;
-                using Exception::Exception;
-        };
     }
 }
 
