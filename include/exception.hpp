@@ -30,16 +30,20 @@ namespace Gsler
                 virtual const char *what() const noexcept;
                 virtual const char *where() const noexcept;
 
-                virtual const char *getMessage() const noexcept;
-                virtual const char *getPath() const noexcept;
-                virtual Code getCode() const noexcept;
-                virtual Line getLine() const noexcept;
+                virtual const char *getMessage() const noexcept final;
+                virtual const char *getPath() const noexcept final;
+                virtual Line getLine() const noexcept final;
+                virtual Code getCode() const noexcept final;
+
+                virtual bool hasPath() const noexcept final;
+                virtual bool hasLine() const noexcept final;
+                virtual bool hasCode() const noexcept final;
 
             protected:
-                virtual void prepareWhat() const;
-                virtual void prepareWhere() const;
+                virtual void prepareWhat();
+                virtual void prepareWhere();
 
-                virtual inline void prepare() const
+                virtual inline void prepare()
                 {
                     Exception::prepareWhat();
                     Exception::prepareWhere();
@@ -60,8 +64,6 @@ namespace Gsler
             public:
                 LogicException() = delete;
                 using Exception::Exception;
-
-                using Exception::what;
         };
     }
 }

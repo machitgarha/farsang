@@ -72,3 +72,18 @@ Exception::Code Exception::getCode() const noexcept
 {
     return this->code;
 }
+
+bool Exception::hasPath() const noexcept
+{
+    return this->path != Exception::PATH_UNKNOWN;
+}
+
+bool Exception::hasLine() const noexcept
+{
+    return this->line != Exception::LINE_UNKNOWN;
+}
+
+bool Exception::hasCode() const noexcept
+{
+    return this->code != Exception::CODE_UNKNOWN;
+}
