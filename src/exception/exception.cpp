@@ -4,6 +4,7 @@ using namespace Gsler::Exception;
 
 const Exception::Path Exception::PATH_UNKNOWN = nullptr;
 const Exception::Line Exception::LINE_UNKNOWN = -1;
+const Exception::Code Exception::CODE_UNKNOWN = 0;
 
 const char *Exception::WHERE_UNKNOWN = nullptr;
 
@@ -69,7 +70,7 @@ Exception::Line Exception::getLine() const noexcept
 
 Exception::Code Exception::getCode() const noexcept
 {
-    return this->code;
+    return this->code == Exception::CODE_UNKNOWN ? this->getDefaultCode() : this->code;
 }
 
 bool Exception::hasPath() const noexcept
