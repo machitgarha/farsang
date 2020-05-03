@@ -103,9 +103,9 @@ void Exception::prepareWhere()
 
     this->whereStr = "";
     if (this->hasPath()) {
-        this->whereStr = this->whereStr + "in file '" + this->path + "";
+        this->whereStr = this->whereStr + "in file '" + this->path + "'";
         if (this->hasLine()) {
-            this->whereStr = this->whereStr + " " + "line " + std::to_string(this->line);
+            this->whereStr = this->whereStr + " at line " + std::to_string(this->line);
         }
     }
 
