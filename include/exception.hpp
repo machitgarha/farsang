@@ -25,6 +25,8 @@ namespace Gsler
                 static const Line LINE_UNKNOWN;
                 static const Code CODE_UNKNOWN;
 
+                static const char *WHERE_UNKNOWN;
+
                 Exception() = delete;
                 Exception(const Message &);
                 Exception(const Message &, const Code);
@@ -41,13 +43,24 @@ namespace Gsler
                 virtual Code getCode() const noexcept;
                 virtual Line getLine() const noexcept;
 
-                // TODO: Add prepareWhat() protected
+            protected:
+                virtual void prepareWhat() const;
+                virtual void prepareWhere() const;
+
+                virtual inline void prepare() const
+                {
+                    Exception::prepareWhat();
+                    Exception::prepareWhere();
+                }
 
             private:
                 Message message;
                 Path path = PATH_UNKNOWN;
                 Line line = LINE_UNKNOWN;
                 Code code = CODE_UNKNOWN;
+
+                std::string whatStr = "";
+                std::string whereStr = "";
         };
 
         class LogicException: public Exception
