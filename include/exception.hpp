@@ -191,6 +191,18 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 75; }
         };
 
+        class NotSupportedException: public RuntimeException
+        {
+            public:
+                NotSupportedException() = delete;
+                NotSupportedException(const NotSupportedException &) = default;
+                NotSupportedException(NotSupportedException &&) = default;
+
+                using RuntimeException::RuntimeException;
+
+                virtual inline Code getDefaultCode() const noexcept { return 95; }
+        };
+
         /*
          * Exceptions that do not have an exact POSIX-compatible error code.
          * Items are not currently sorted in a dedicated fasion.
