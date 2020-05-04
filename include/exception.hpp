@@ -13,6 +13,10 @@ namespace Gsler
 {
     namespace Exception
     {
+        /**
+         * Base exception of all Gsler exceptions.
+         * TODO: Add comments here.
+         */
         class Exception: public std::exception
         {
             public:
@@ -70,6 +74,126 @@ namespace Gsler
 
                 std::string whatStr = "";
                 std::string whereStr = "";
+        };
+
+        /**
+         * Exceptions in which are mostly a base for other exceptions.
+         * These exceptions, generally, have no POSIX-compatible error code.
+         * Sorted by:
+         *  1. First, ones which have POSIX-compatible error code, then the rest.
+         *  2. Inside the groups, being parent of more exception classes.
+         */
+
+        class ArithmeticException: public Exception
+        {
+            public:
+                ArithmeticException() = delete;
+                ArithmeticException(const ArithmeticException &) = default;
+                ArithmeticException(ArithmeticException &&) = default;
+
+                using Exception::Exception;
+        };
+
+        /*
+         * Exceptions that do have a POSIX-compatible error code.
+         * Sorted by the error code.
+         */
+
+        class OutOfMemoryException: public Exception
+        {
+            public:
+                OutOfMemoryException() = delete;
+                OutOfMemoryException(const OutOfMemoryException &) = default;
+                OutOfMemoryException(OutOfMemoryException &&) = default;
+
+                using Exception::Exception;
+
+                virtual inline Code getDefaultCode() const noexcept { return 12; }
+        };
+
+        class InvalidPointerException: public Exception
+        {
+            public:
+                InvalidPointerException() = delete;
+                InvalidPointerException(const InvalidPointerException &) = default;
+                InvalidPointerException(InvalidPointerException &&) = default;
+
+                using Exception::Exception;
+
+                virtual inline Code getDefaultCode() const noexcept { return 14; }
+        };
+
+        class InvalidArgumentException: public Exception
+        {
+            public:
+                InvalidArgumentException() = delete;
+                InvalidArgumentException(const InvalidArgumentException &) = default;
+                InvalidArgumentException(InvalidArgumentException &&) = default;
+
+                using Exception::Exception;
+
+                virtual inline Code getDefaultCode() const noexcept { return 22; }
+        };
+
+        class DomainException: public Exception
+        {
+            public:
+                DomainException() = delete;
+                DomainException(const DomainException &) = default;
+                DomainException(DomainException &&) = default;
+
+                using Exception::Exception;
+
+                virtual inline Code getDefaultCode() const noexcept { return 33; }
+        };
+
+        class RangeException: public Exception
+        {
+            public:
+                RangeException() = delete;
+                RangeException(const RangeException &) = default;
+                RangeException(RangeException &&) = default;
+
+                using Exception::Exception;
+
+                virtual inline Code getDefaultCode() const noexcept { return 34; }
+        };
+
+        class OverflowException: public Exception
+        {
+            public:
+                OverflowException() = delete;
+                OverflowException(const OverflowException &) = default;
+                OverflowException(OverflowException &&) = default;
+
+                using Exception::Exception;
+
+                virtual inline Code getDefaultCode() const noexcept { return 75; }
+        };
+
+        /*
+         * Exceptions that do not have an exact POSIX-compatible error code.
+         * Items are not currently sorted in a dedicated fasion.
+         */
+
+        class UnderflowException: public Exception
+        {
+            public:
+                UnderflowException() = delete;
+                UnderflowException(const UnderflowException &) = default;
+                UnderflowException(UnderflowException &&) = default;
+
+                using Exception::Exception;
+        };
+
+        class DivisionByZeroException: public ArithmeticException
+        {
+            public:
+                DivisionByZeroException() = delete;
+                DivisionByZeroException(const DivisionByZeroException &) = default;
+                DivisionByZeroException(DivisionByZeroException &&) = default;
+
+                using ArithmeticException::ArithmeticException;
         };
     }
 }
