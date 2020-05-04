@@ -179,6 +179,18 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 34; }
         };
 
+        class NotImplementedException: public LogicException
+        {
+            public:
+                NotImplementedException() = delete;
+                NotImplementedException(const NotImplementedException &) = default;
+                NotImplementedException(NotImplementedException &&) = default;
+
+                using LogicException::LogicException;
+
+                virtual inline Code getDefaultCode() const noexcept { return 38; }
+        };
+
         class OverflowException: public RuntimeException
         {
             public:
@@ -205,7 +217,7 @@ namespace Gsler
 
         /*
          * Exceptions that do not have an exact POSIX-compatible error code.
-         * Items are not currently sorted in a dedicated fasion.
+         * Sorted based on parent classes.
          */
 
         class UnderflowException: public RuntimeException
