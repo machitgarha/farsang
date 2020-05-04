@@ -9,9 +9,9 @@ namespace Gsler
     {
         public:
             using Message = const char *;
-            using FilePath = const char *;
+            using Path = const char *;
             using Line = int;
-            using ErrorCode = int;
+            using Code = int;
 
             ErrorHandler() = delete;
             ErrorHandler(const ErrorHandler &) = delete;
@@ -20,7 +20,7 @@ namespace Gsler
 
         protected:
             // The functional part of the class is here
-            static void handle(const Message, const FilePath, const Line, const ErrorCode);
+            static void handle(const Message, const Path, const Line, const Code);
 
         private:
             // Preparing error handler before starting main
