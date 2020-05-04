@@ -73,19 +73,24 @@ Exception::Code Exception::getCode() const noexcept
     return this->code == Exception::CODE_UNKNOWN ? this->getDefaultCode() : this->code;
 }
 
-bool Exception::hasPath() const noexcept
+bool Exception::isPathSet() const noexcept
 {
     return this->path != Exception::PATH_UNKNOWN;
 }
 
-bool Exception::hasLine() const noexcept
+bool Exception::isLineSet() const noexcept
 {
     return this->line != Exception::LINE_UNKNOWN;
 }
 
-bool Exception::hasWhere() const noexcept
+bool Exception::isCodeSet() const noexcept
 {
-    return this->where() != Exception::WHERE_UNKNOWN;
+    return this->code != Exception::CODE_UNKNOWN;
+}
+
+bool Exception::isLocationSet() const noexcept
+{
+    return this->isPathSet() && this->isLineSet();
 }
 
 void Exception::prepareWhere()
@@ -97,9 +102,9 @@ void Exception::prepareWhere()
     }
 
     this->whereStr = "";
-    if (this->hasPath()) {
+    if (this->isPathSet()) {
         this->whereStr = this->whereStr + "in file '" + this->path + "'";
-        if (this->hasLine()) {
+        if (this->isLineSet()) {
             this->whereStr = this->whereStr + " at line " + std::to_string(this->line);
         }
     }
@@ -118,7 +123,7 @@ void Exception::prepareWhat()
     this->prepareWhere();
 
     this->whatStr = this->message;
-    if (this->hasWhere()) {
+    if (this->isLocationSet()) {
         this->whatStr = this->whatStr + " (" + this->whereStr + ")";
     }
 

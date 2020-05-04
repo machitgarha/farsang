@@ -2,6 +2,7 @@
 #define GSLER_EXCEPTION_INC
 
 #include <stdexcept>
+#include <asm-generic/errno-base.h>
 
 #define EXCEPTION(...)\
     Gsler::Exception::Exception(__VA_ARGS__, __FILE__, __LINE__)
@@ -43,10 +44,10 @@ namespace Gsler
                 virtual Line getLine() const noexcept final;
                 virtual Code getCode() const noexcept final;
 
-                virtual bool hasPath() const noexcept final;
-                virtual bool hasLine() const noexcept final;
-
-                virtual bool hasWhere() const noexcept final;
+                virtual bool isPathSet() const noexcept final;
+                virtual bool isLineSet() const noexcept final;
+                virtual bool isCodeSet() const noexcept final;
+                virtual bool isLocationSet() const noexcept final;
 
                 virtual inline Code getDefaultCode() const noexcept { return 1; }
 
