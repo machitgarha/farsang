@@ -5,11 +5,17 @@
 using namespace Gsler;
 using namespace Gsler::Exception;
 
+bool ErrorHandler::toShowLocation = true;
+
+// Ah, this is the magic!
 const bool ErrorHandler::_prepare = ErrorHandler::prepare();
 
-void ErrorHandler::handle(const Message message, const Path file, const Line line,
+void ErrorHandler::handle(const Message message, const Path f, const Line l,
     const Code code)
 {
+    const Path file = ErrorHandler::toShowLocation ? f : nullptr;
+    const Line line = ErrorHandler::toShowLocation ? l : Exception::Exception::LINE_UNKNOWN;
+
     switch (code) {
         // Will not enter here, but for making sure
         case GSL_SUCCESS:
