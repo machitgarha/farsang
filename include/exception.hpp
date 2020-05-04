@@ -111,7 +111,7 @@ namespace Gsler
                 ArithmeticException(const ArithmeticException &) = default;
                 ArithmeticException(ArithmeticException &&) = default;
 
-                using Exception::Exception;
+                using RuntimeException::RuntimeException;
         };
 
         /*
@@ -126,7 +126,7 @@ namespace Gsler
                 OutOfMemoryException(const OutOfMemoryException &) = default;
                 OutOfMemoryException(OutOfMemoryException &&) = default;
 
-                using Exception::Exception;
+                using RuntimeException::RuntimeException;
 
                 virtual inline Code getDefaultCode() const noexcept { return 12; }
         };
@@ -138,7 +138,7 @@ namespace Gsler
                 InvalidPointerException(const InvalidPointerException &) = default;
                 InvalidPointerException(InvalidPointerException &&) = default;
 
-                using Exception::Exception;
+                using LogicException::LogicException;
 
                 virtual inline Code getDefaultCode() const noexcept { return 14; }
         };
@@ -150,7 +150,7 @@ namespace Gsler
                 InvalidArgumentException(const InvalidArgumentException &) = default;
                 InvalidArgumentException(InvalidArgumentException &&) = default;
 
-                using Exception::Exception;
+                using LogicException::LogicException;
 
                 virtual inline Code getDefaultCode() const noexcept { return 22; }
         };
@@ -162,7 +162,7 @@ namespace Gsler
                 DomainException(const DomainException &) = default;
                 DomainException(DomainException &&) = default;
 
-                using Exception::Exception;
+                using LogicException::LogicException;
 
                 virtual inline Code getDefaultCode() const noexcept { return 33; }
         };
@@ -174,7 +174,7 @@ namespace Gsler
                 RangeException(const RangeException &) = default;
                 RangeException(RangeException &&) = default;
 
-                using Exception::Exception;
+                using RuntimeException::RuntimeException;
 
                 virtual inline Code getDefaultCode() const noexcept { return 34; }
         };
@@ -186,7 +186,7 @@ namespace Gsler
                 OverflowException(const OverflowException &) = default;
                 OverflowException(OverflowException &&) = default;
 
-                using Exception::Exception;
+                using RuntimeException::RuntimeException;
 
                 virtual inline Code getDefaultCode() const noexcept { return 75; }
         };
@@ -203,7 +203,7 @@ namespace Gsler
                 UnderflowException(const UnderflowException &) = default;
                 UnderflowException(UnderflowException &&) = default;
 
-                using Exception::Exception;
+                using RuntimeException::RuntimeException;
         };
 
         class DivisionByZeroException: public ArithmeticException
