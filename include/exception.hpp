@@ -84,7 +84,27 @@ namespace Gsler
          *  2. Inside the groups, being parent of more exception classes.
          */
 
-        class ArithmeticException: public Exception
+        class LogicException: public Exception
+        {
+            public:
+                LogicException() = delete;
+                LogicException(const LogicException &) = default;
+                LogicException(LogicException &&) = default;
+
+                using Exception::Exception;
+        };
+
+        class RuntimeException: public Exception
+        {
+            public:
+                RuntimeException() = delete;
+                RuntimeException(const RuntimeException &) = default;
+                RuntimeException(RuntimeException &&) = default;
+
+                using Exception::Exception;
+        };
+
+        class ArithmeticException: public RuntimeException
         {
             public:
                 ArithmeticException() = delete;
@@ -99,7 +119,7 @@ namespace Gsler
          * Sorted by the error code.
          */
 
-        class OutOfMemoryException: public Exception
+        class OutOfMemoryException: public RuntimeException
         {
             public:
                 OutOfMemoryException() = delete;
@@ -111,7 +131,7 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 12; }
         };
 
-        class InvalidPointerException: public Exception
+        class InvalidPointerException: public LogicException
         {
             public:
                 InvalidPointerException() = delete;
@@ -123,7 +143,7 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 14; }
         };
 
-        class InvalidArgumentException: public Exception
+        class InvalidArgumentException: public LogicException
         {
             public:
                 InvalidArgumentException() = delete;
@@ -135,7 +155,7 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 22; }
         };
 
-        class DomainException: public Exception
+        class DomainException: public LogicException
         {
             public:
                 DomainException() = delete;
@@ -147,7 +167,7 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 33; }
         };
 
-        class RangeException: public Exception
+        class RangeException: public RuntimeException
         {
             public:
                 RangeException() = delete;
@@ -159,7 +179,7 @@ namespace Gsler
                 virtual inline Code getDefaultCode() const noexcept { return 34; }
         };
 
-        class OverflowException: public Exception
+        class OverflowException: public RuntimeException
         {
             public:
                 OverflowException() = delete;
@@ -176,7 +196,7 @@ namespace Gsler
          * Items are not currently sorted in a dedicated fasion.
          */
 
-        class UnderflowException: public Exception
+        class UnderflowException: public RuntimeException
         {
             public:
                 UnderflowException() = delete;
