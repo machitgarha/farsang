@@ -276,6 +276,7 @@ const RandomGenerator &RandomGenerator::fileWrite(std::ofstream &f) const
 
 void RandomGenerator::setupEnvironment()
 {
+    // TODO: Add an option to supress the output of the following function (stderr)
     gsl_rng_env_setup();
 
     // Update static variables
