@@ -100,6 +100,8 @@ namespace Gsler
 
             Seed getSeed() const noexcept(true);
 
+            // TODO: Add getter for generator type
+
             ULong generate() const noexcept(true);
 
             ULong generateUniform(Max) const noexcept(true);
@@ -119,20 +121,26 @@ namespace Gsler
             static Seed getDefaultSeed() noexcept(true);
             static void setDefaultSeed(const Seed) noexcept(true);
 
+            static const GeneratorType *getDefaultGeneratorType() noexcept(true);
+            static void setDefaultGeneratorType(const GeneratorType *) noexcept(true);
+
         protected:
             using Generator = gsl_rng;
 
             void free() noexcept(true);
 
+            // Uses default generator type
+            static Generator *allocate();
             static Generator *allocate(const GeneratorType *);
+
             static Generator *clone(const Generator *);
 
         private:
-            const GeneratorType *generatorType;
-            Generator *generator;
-
+            Generator *generator = RandomGenerator::allocate();
             Seed _seed = RandomGenerator::defaultSeed;
+
             static Seed defaultSeed;
+            static const GeneratorType *defaultGeneratorType;
     };
 
     FILE *operator>>(FILE *, RandomGenerator &);

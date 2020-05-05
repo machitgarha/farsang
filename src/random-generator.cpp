@@ -130,36 +130,31 @@ const RandomGenerator::GeneratorType *const RandomGenerator::zuf =
     gsl_rng_zuf;
 
 RandomGenerator::Seed RandomGenerator::defaultSeed = gsl_rng_default_seed;
+const RandomGenerator::GeneratorType *RandomGenerator::defaultGeneratorType =
+    gsl_rng_default;
 
-RandomGenerator::RandomGenerator():
-    generatorType(gsl_rng_default),
-    generator(this->allocate(this->generatorType))
+RandomGenerator::RandomGenerator()
 {
 }
 
-RandomGenerator::RandomGenerator(const Seed seed):
-    generatorType(gsl_rng_default),
-    generator(this->allocate(this->generatorType))
+RandomGenerator::RandomGenerator(const Seed seed)
 {
     this->seed(seed);
 }
 
 RandomGenerator::RandomGenerator(const GeneratorType *gType):
-    generatorType(gType),
-    generator(this->allocate(this->generatorType))
+    generator(RandomGenerator::allocate(gType))
 {
 }
 
 RandomGenerator::RandomGenerator(const GeneratorType *gType, const Seed seed):
-    generatorType(gType),
-    generator(this->allocate(this->generatorType))
+    generator(RandomGenerator::allocate(gType))
 {
     this->seed(seed);
 }
 
 RandomGenerator::RandomGenerator(const RandomGenerator &r):
-    generatorType(r.generatorType),
-    generator(this->clone(r.generator))
+    generator(RandomGenerator::clone(r.generator))
 {
 }
 
@@ -295,9 +290,26 @@ void RandomGenerator::setDefaultSeed(const Seed seed) noexcept(true)
     RandomGenerator::defaultSeed = seed;
 }
 
+const RandomGenerator::GeneratorType *RandomGenerator::getDefaultGeneratorType()
+    noexcept(true)
+{
+    return RandomGenerator::defaultGeneratorType;
+}
+
+void RandomGenerator::setDefaultGeneratorType(const GeneratorType *e) noexcept(true)
+{
+    RandomGenerator::defaultGeneratorType = e;
+}
+
+
 void RandomGenerator::free() noexcept(true)
 {
     gsl_rng_free(this->generator);
+}
+
+RandomGenerator::Generator *RandomGenerator::allocate()
+{
+    return gsl_rng_alloc(RandomGenerator::getDefaultGeneratorType());
 }
 
 RandomGenerator::Generator *RandomGenerator::allocate(const GeneratorType *t)
