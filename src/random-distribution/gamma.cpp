@@ -28,10 +28,12 @@ GammaDistribution::Double GammaDistribution::get(std::tuple<A, B> t) const noexc
 
 void GammaDistribution::validateParam(std::tuple<A, B> t) const
 {
-    if (std::get<0>(t) <= 0) {
-        throw Exception::InvalidArgumentException("a must be positive");
+    A a = std::get<0>(t);
+    B b = std::get<1>(t);
+    if (a <= 0 || a == 1) {
+        throw Exception::InvalidArgumentException("a must be positive and not equals 1");
     }
-    if (std::get<1>(t) <= 0) {
+    if (b <= 0) {
         throw Exception::InvalidArgumentException("b must be positive");
     }
 }

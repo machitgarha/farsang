@@ -20,8 +20,8 @@ GaussianDistribution::Double GaussianDistribution::get(Sigma sigma) const noexce
 
 void GaussianDistribution::validateParam(Sigma sigma) const
 {
-    if (sigma <= 0) {
-        throw Exception::InvalidArgumentException("Sigma must be positive");
+    if (sigma == 0) {
+        throw Exception::InvalidArgumentException("Sigma must not be zero");
     }
 }
 
