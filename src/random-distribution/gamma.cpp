@@ -36,6 +36,11 @@ void GammaDistribution::validateParam(std::tuple<A, B> t) const
     if (b <= 0) {
         throw Exception::InvalidArgumentException("b must be positive");
     }
+    if (b < 0 && (-1 <= a && a <= 1)) {
+        throw Exception::ArithmeticException(
+            "Base cannot be positive while power is in the range of (-1, 1)"
+        );
+    }
 }
 
 const GammaDistribution &GammaDistribution::operator>>(Double &result) const
