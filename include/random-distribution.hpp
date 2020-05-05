@@ -2,6 +2,7 @@
 #define GSLER_RANDOM_DISTRIBUTION_INC
 
 #include "random-generator.hpp"
+#include "exception.hpp"
 
 namespace Gsler
 {
@@ -54,10 +55,59 @@ namespace Gsler
     class GammaDistribution: public RandomDistribution
     {
         public:
+            using A = Double;
+            using B = Double;
+
             GammaDistribution() = delete;
+            GammaDistribution(const RandomGenerator &, A, B);
+
             using RandomDistribution::RandomDistribution;
 
-            virtual Double get(Double, Double) const noexcept final;
+            // Uses default a and b
+            virtual Double get() const final;
+            virtual Double get(A, B) const noexcept final;
+
+            virtual inline A getParamA() const final
+            {
+                if (!this->isParamASet) {
+                    throw Exception::Exception("Parameter A is not set");
+                }
+                return this->a;
+            }
+            virtual inline GammaDistribution &setParamA(A a) noexcept final
+            {
+                this->a = a;
+                this->isParamASet = true;
+                return *this;
+            }
+            virtual inline bool isSetParamA() const noexcept final
+            {
+                return this->isParamASet;
+            }
+
+            virtual inline B getParamB() const final
+            {
+                if (!this->isParamBSet) {
+                    throw Exception::Exception("Parameter B is not set");
+                }
+                return this->b;
+            }
+            virtual inline GammaDistribution &setParamB(B b) noexcept final
+            {
+                this->b = b;
+                this->isParamBSet = true;
+                return *this;
+            }
+            virtual inline bool isSetParamB() const noexcept final
+            {
+                return this->isParamBSet;
+            }
+
+        private:
+            A a;
+            B b;
+            bool isParamASet = false;
+            bool isParamBSet = false;
     };
 
     class PoissonDistribution: public RandomDistribution
