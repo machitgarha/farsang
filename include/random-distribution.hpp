@@ -9,6 +9,7 @@ namespace Gsler
     {
         public:
             using Double = double;
+            using UInt = unsigned int;
 
             RandomDistribution() = delete;
             RandomDistribution(const RandomGenerator &);
@@ -37,7 +38,16 @@ namespace Gsler
             GammaDistribution() = delete;
             using RandomDistribution::RandomDistribution;
 
-            virtual Double get(Double, Double) const noexcept;
+            virtual Double get(Double, Double) const noexcept final;
+    };
+
+    class PoissonDistribution: public RandomDistribution
+    {
+        public:
+            PoissonDistribution() = delete;
+            using RandomDistribution::RandomDistribution;
+
+            virtual UInt get(Double) const noexcept final;
     };
 }
 
