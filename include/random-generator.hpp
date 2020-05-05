@@ -90,23 +90,23 @@ namespace Gsler
             RandomGenerator(const RandomGenerator &);
             ~RandomGenerator();
 
-            ULong getMin() const noexcept(true);
-            ULong getMax() const noexcept(true);
+            ULong getMin() const noexcept;
+            ULong getMax() const noexcept;
 
-            Name getName() const noexcept(true);
+            Name getName() const noexcept;
 
-            State getState() const noexcept(true);
-            Size getSize() const noexcept(true);
+            State getState() const noexcept;
+            Size getSize() const noexcept;
 
-            Seed getSeed() const noexcept(true);
+            Seed getSeed() const noexcept;
 
             // TODO: Add getter for generator type
 
-            ULong generate() const noexcept(true);
+            ULong generate() const noexcept;
 
-            ULong generateUniform(Max) const noexcept(true);
-            Double generateUniform() const noexcept(true);
-            Double generateUniformPos() const noexcept(true);
+            ULong generateUniform(Max) const noexcept;
+            Double generateUniform() const noexcept;
+            Double generateUniformPos() const noexcept;
 
             RandomGenerator &seed(const Seed);
 
@@ -118,16 +118,16 @@ namespace Gsler
 
             static void setupEnvironment();
 
-            static Seed getDefaultSeed() noexcept(true);
-            static void setDefaultSeed(const Seed) noexcept(true);
+            static Seed getDefaultSeed() noexcept;
+            static void setDefaultSeed(const Seed) noexcept;
 
-            static const GeneratorType *getDefaultGeneratorType() noexcept(true);
-            static void setDefaultGeneratorType(const GeneratorType *) noexcept(true);
+            static const GeneratorType *getDefaultGeneratorType() noexcept;
+            static void setDefaultGeneratorType(const GeneratorType *) noexcept;
 
         protected:
             using Generator = gsl_rng;
 
-            void free() noexcept(true);
+            void free() noexcept;
 
             // Uses default generator type
             static Generator *allocate();

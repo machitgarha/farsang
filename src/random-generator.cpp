@@ -163,53 +163,52 @@ RandomGenerator::~RandomGenerator()
     this->free();
 }
 
-RandomGenerator::ULong RandomGenerator::getMin() const noexcept(true)
+RandomGenerator::ULong RandomGenerator::getMin() const noexcept
 {
     return gsl_rng_min(this->generator);
 }
 
-RandomGenerator::ULong RandomGenerator::getMax() const noexcept(true)
+RandomGenerator::ULong RandomGenerator::getMax() const noexcept
 {
     return gsl_rng_max(this->generator);
 }
 
-RandomGenerator::Name RandomGenerator::getName() const noexcept(true)
+RandomGenerator::Name RandomGenerator::getName() const noexcept
 {
     return gsl_rng_name(this->generator);
 }
 
-RandomGenerator::State RandomGenerator::getState() const noexcept(true)
+RandomGenerator::State RandomGenerator::getState() const noexcept
 {
     return gsl_rng_state(this->generator);
 }
 
-RandomGenerator::Size RandomGenerator::getSize() const noexcept(true)
+RandomGenerator::Size RandomGenerator::getSize() const noexcept
 {
     return gsl_rng_size(this->generator);
 }
 
-RandomGenerator::Seed RandomGenerator::getSeed() const noexcept(true)
+RandomGenerator::Seed RandomGenerator::getSeed() const noexcept
 {
     return this->_seed;
 }
 
-RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)
+RandomGenerator::ULong RandomGenerator::generate() const noexcept
 {
     return gsl_rng_get(this->generator);
 }
 
-RandomGenerator::ULong RandomGenerator::generateUniform(Max max) const
-    noexcept(true)
+RandomGenerator::ULong RandomGenerator::generateUniform(Max max) const noexcept
 {
     return gsl_rng_uniform_int(this->generator, max);
 }
 
-RandomGenerator::Double RandomGenerator::generateUniform() const noexcept(true)
+RandomGenerator::Double RandomGenerator::generateUniform() const noexcept
 {
     return gsl_rng_uniform(this->generator);
 }
 
-RandomGenerator::Double RandomGenerator::generateUniformPos() const noexcept(true)
+RandomGenerator::Double RandomGenerator::generateUniformPos() const noexcept
 {
     return gsl_rng_uniform_pos(this->generator);
 }
@@ -281,29 +280,28 @@ void RandomGenerator::setupEnvironment()
     RandomGenerator::setDefaultGeneratorType(gsl_rng_default);
 }
 
-RandomGenerator::Seed RandomGenerator::getDefaultSeed() noexcept(true)
+RandomGenerator::Seed RandomGenerator::getDefaultSeed() noexcept
 {
     return RandomGenerator::defaultSeed;
 }
 
-void RandomGenerator::setDefaultSeed(const Seed seed) noexcept(true)
+void RandomGenerator::setDefaultSeed(const Seed seed) noexcept
 {
     RandomGenerator::defaultSeed = seed;
 }
 
-const RandomGenerator::GeneratorType *RandomGenerator::getDefaultGeneratorType()
-    noexcept(true)
+const RandomGenerator::GeneratorType *RandomGenerator::getDefaultGeneratorType() noexcept
 {
     return RandomGenerator::defaultGeneratorType;
 }
 
-void RandomGenerator::setDefaultGeneratorType(const GeneratorType *e) noexcept(true)
+void RandomGenerator::setDefaultGeneratorType(const GeneratorType *e) noexcept
 {
     RandomGenerator::defaultGeneratorType = e;
 }
 
 
-void RandomGenerator::free() noexcept(true)
+void RandomGenerator::free() noexcept
 {
     gsl_rng_free(this->generator);
 }
