@@ -88,6 +88,8 @@ namespace Gsler
             virtual Double get() const final;
             virtual Double get(A, B) const noexcept final;
             virtual Double get(std::tuple<A, B>) const noexcept final;
+
+            const GammaDistribution &operator>>(Double &) const;
     };
 
     class PoissonDistribution: public RandomDistribution<double>

@@ -23,3 +23,9 @@ GammaDistribution::Double GammaDistribution::get(std::tuple<A, B> t) const noexc
     return gsl_ran_gamma(this->getGenerator().getGenerator(),
         std::get<0>(t), std::get<1>(t));
 }
+
+const GammaDistribution &GammaDistribution::operator>>(Double &result) const
+{
+    result = this->get();
+    return *this;
+}
