@@ -23,11 +23,28 @@ namespace Gsler
             virtual ~RandomDistribution() = 0;
 
             // Parameter handling
-            ParamType getParam() const;
-            bool isParamSet() const noexcept;
-            RandomDistribution &setParam(ParamType) noexcept;
+            inline ParamType getParam() const
+            {
+                if (!this->_isParamSet) {
+                    throw Exception::Exception("Parameter(s) has(ve) not been set");
+                }
+                return this->param;
+            }
+            inline bool isParamSet() const noexcept
+            {
+                return this->_isParamSet;
+            }
+            inline RandomDistribution &setParam(ParamType) noexcept
+            {
+                this->_isParamSet = true;
+                this->param = param;
+                return *this;
+            }
 
-            virtual const RandomGenerator &getGenerator() const noexcept final;
+            virtual inline const RandomGenerator &getGenerator() const noexcept final
+            {
+                return this->generator;
+            }
 
         private:
             const RandomGenerator &generator;
