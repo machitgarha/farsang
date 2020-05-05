@@ -16,8 +16,15 @@ namespace Gsler
             using UInt = unsigned int;
 
             RandomDistribution() = delete;
-            RandomDistribution(const RandomGenerator &);
-            RandomDistribution(const RandomGenerator &, ParamType);
+            RandomDistribution(const RandomGenerator &rGenerator):
+                generator(rGenerator)
+            {
+            }
+            RandomDistribution(const RandomGenerator &rGenerator, ParamType param):
+                generator(rGenerator),
+                param(param)
+            {
+            }
 
             // Only for making class abstract
             virtual ~RandomDistribution() = 0;
