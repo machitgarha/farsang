@@ -29,7 +29,7 @@ namespace Gsler
             GaussianDistribution() = delete;
             using RandomDistribution::RandomDistribution;
 
-            virtual Double get(Double = 1) const noexcept;
+            virtual Double get(Double = 1) const noexcept final;
     };
 
     class GammaDistribution: public RandomDistribution
