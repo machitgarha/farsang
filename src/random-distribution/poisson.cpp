@@ -14,7 +14,15 @@ PoissonDistribution::UInt PoissonDistribution::get() const
 
 PoissonDistribution::UInt PoissonDistribution::get(Mu mu) const noexcept
 {
+    this->validateParam(mu);
     return gsl_ran_poisson(this->getGenerator().getGenerator(), mu);
+}
+
+void PoissonDistribution::validateParam(Mu mu) const
+{
+    if (mu <= 0) {
+        throw Exception::InvalidArgumentException("Mu must be positive");
+    }
 }
 
 const PoissonDistribution &PoissonDistribution::operator>>(UInt &result) const

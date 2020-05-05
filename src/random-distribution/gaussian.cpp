@@ -14,7 +14,15 @@ GaussianDistribution::Double GaussianDistribution::get() const
 
 GaussianDistribution::Double GaussianDistribution::get(Sigma sigma) const noexcept
 {
+    this->validateParam(sigma);
     return gsl_ran_gaussian(this->getGenerator().getGenerator(), sigma);
+}
+
+void GaussianDistribution::validateParam(Sigma sigma) const
+{
+    if (sigma <= 0) {
+        throw Exception::InvalidArgumentException("Sigma must be positive");
+    }
 }
 
 const GaussianDistribution &GaussianDistribution::operator>>(Double &result) const

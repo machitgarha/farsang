@@ -15,13 +15,25 @@ GammaDistribution::Double GammaDistribution::get() const
 
 GammaDistribution::Double GammaDistribution::get(A a, B b) const noexcept
 {
+    this->validateParam(std::tuple<A, B>(a, b));
     return gsl_ran_gamma(this->getGenerator().getGenerator(), a, b);
 }
 
 GammaDistribution::Double GammaDistribution::get(std::tuple<A, B> t) const noexcept
 {
+    this->validateParam(t);
     return gsl_ran_gamma(this->getGenerator().getGenerator(),
         std::get<0>(t), std::get<1>(t));
+}
+
+void GammaDistribution::validateParam(std::tuple<A, B> t) const
+{
+    if (std::get<0>(t) <= 0) {
+        throw Exception::InvalidArgumentException("a must be positive");
+    }
+    if (std::get<1>(t) <= 0) {
+        throw Exception::InvalidArgumentException("b must be positive");
+    }
 }
 
 const GammaDistribution &GammaDistribution::operator>>(Double &result) const

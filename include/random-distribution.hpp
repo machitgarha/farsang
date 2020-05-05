@@ -41,12 +41,15 @@ namespace Gsler
             {
                 return this->_isParamSet;
             }
-            inline RandomDistribution &setParam(ParamType) noexcept
+            inline RandomDistribution &setParam(ParamType param) noexcept
             {
+                this->validateParam(param);
                 this->_isParamSet = true;
                 this->param = param;
                 return *this;
             }
+
+            virtual void validateParam(ParamType) const = 0;
 
             virtual inline const RandomGenerator &getGenerator() const noexcept final
             {
@@ -72,6 +75,8 @@ namespace Gsler
             virtual Double get() const final;
             virtual Double get(Sigma) const noexcept final;
 
+            virtual void validateParam(Sigma) const override;
+
             const GaussianDistribution &operator>>(Double &) const;
     };
 
@@ -89,6 +94,8 @@ namespace Gsler
             virtual Double get(A, B) const noexcept final;
             virtual Double get(std::tuple<A, B>) const noexcept final;
 
+            virtual void validateParam(std::tuple<A, B>) const override;
+
             const GammaDistribution &operator>>(Double &) const;
     };
 
@@ -103,6 +110,8 @@ namespace Gsler
             // Uses default Mu
             virtual UInt get() const final;
             virtual UInt get(Mu) const noexcept final;
+
+            virtual void validateParam(Mu) const override;
 
             const PoissonDistribution &operator>>(UInt &) const;
     };
