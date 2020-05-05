@@ -8,6 +8,8 @@ namespace Gsler
     class RandomDistribution
     {
         public:
+            using Double = double;
+
             RandomDistribution() = delete;
             RandomDistribution(const RandomGenerator &);
 
@@ -18,6 +20,15 @@ namespace Gsler
 
         private:
             const RandomGenerator &generator;
+    };
+
+    class GaussianDistribution: public RandomDistribution
+    {
+        public:
+            GaussianDistribution() = delete;
+            using RandomDistribution::RandomDistribution;
+
+            virtual Double get(Double = 1) const noexcept;
     };
 }
 
