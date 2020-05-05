@@ -28,7 +28,7 @@ template<typename ParamType>
 ParamType RandomDistribution<ParamType>::getParam() const
 {
     if (!this->_isParamSet) {
-        throw Exception::Exception("Parameter has not been set");
+        throw Exception::Exception("Parameter(s) has(ve) not been set");
     }
     return this->param;
 }
