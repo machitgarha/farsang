@@ -7,7 +7,7 @@ using namespace Gsler::Exception;
 
 bool ErrorHandler::toShowLocation = true;
 
-// Ah, this is the magic!
+// Umm... This is the magic!
 const bool ErrorHandler::_prepare = ErrorHandler::prepare();
 
 void ErrorHandler::handle(const Message message, const Path f, const Line l,
