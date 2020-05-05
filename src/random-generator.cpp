@@ -213,11 +213,7 @@ RandomGenerator::ULong RandomGenerator::generate() const noexcept(true)
 RandomGenerator::ULong RandomGenerator::generateUniform(Max max) const
     noexcept(true)
 {
-    ULong result = gsl_rng_uniform_int(this->generator, max);
-
-    RandomGenerator::checkErrors();
-
-    return result;
+    return gsl_rng_uniform_int(this->generator, max);
 }
 
 RandomGenerator::Double RandomGenerator::generateUniform() const noexcept(true)
@@ -234,8 +230,6 @@ RandomGenerator &RandomGenerator::seed(const Seed seed)
 {
     gsl_rng_set(this->generator, seed);
 
-    RandomGenerator::checkErrors();
-
     // Should be here in the case of errors
     this->_seed = seed;
 
@@ -245,8 +239,6 @@ RandomGenerator &RandomGenerator::seed(const Seed seed)
 RandomGenerator &RandomGenerator::fileRead(FILE *f)
 {
     gsl_rng_fread(f, this->generator);
-
-    RandomGenerator::checkErrors();
 
     return *this;
 }
@@ -272,8 +264,6 @@ const RandomGenerator &RandomGenerator::fileWrite(FILE *f) const
 {
     gsl_rng_fwrite(f, this->generator);
 
-    RandomGenerator::checkErrors();
-
     return *this;
 }
 
@@ -298,8 +288,6 @@ void RandomGenerator::setupEnvironment()
 {
     gsl_rng_env_setup();
 
-    RandomGenerator::checkErrors();
-
     // Update static variables
     RandomGenerator::setDefaultSeed(gsl_rng_default_seed);
 }
@@ -319,18 +307,9 @@ void RandomGenerator::free() noexcept(true)
     gsl_rng_free(this->generator);
 }
 
-void RandomGenerator::checkErrors()
-{
-    // TODO: Implement this
-}
-
 RandomGenerator::Generator *RandomGenerator::allocate(const GeneratorType *t)
 {
-    Generator *generator = gsl_rng_alloc(t);
-
-    RandomGenerator::checkErrors();
-
-    return generator;
+    return gsl_rng_alloc(t);
 }
 
 RandomGenerator::Generator *RandomGenerator::clone(const Generator *g)

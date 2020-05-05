@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <gsl/gsl_rng.h>
+#include "error-handler.hpp"
 
 namespace Gsler
 {
@@ -122,8 +123,6 @@ namespace Gsler
             using Generator = gsl_rng;
 
             void free() noexcept(true);
-
-            static void checkErrors();
 
             static Generator *allocate(const GeneratorType *);
             static Generator *clone(const Generator *);
