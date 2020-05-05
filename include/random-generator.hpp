@@ -16,6 +16,7 @@ namespace Gsler
             using Max = ULong;
             using Seed = ULong;
             using Double = double;
+            using Generator = gsl_rng;
             using GeneratorType = gsl_rng_type;
             using Name = const char *;
             using State = void *;
@@ -101,6 +102,8 @@ namespace Gsler
 
             Seed getSeed() const noexcept;
 
+            const Generator *getGenerator() const noexcept;
+
             ULong generate() const noexcept;
             ULong generate(const Min, const Max) const;
 
@@ -125,8 +128,6 @@ namespace Gsler
             static void setDefaultGeneratorType(const GeneratorType *) noexcept;
 
         protected:
-            using Generator = gsl_rng;
-
             void free() noexcept;
 
             // Uses default generator type

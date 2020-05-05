@@ -194,6 +194,11 @@ RandomGenerator::Seed RandomGenerator::getSeed() const noexcept
     return this->_seed;
 }
 
+const RandomGenerator::Generator *RandomGenerator::getGenerator() const noexcept
+{
+    return this->generator;
+}
+
 RandomGenerator::ULong RandomGenerator::generate() const noexcept
 {
     return gsl_rng_get(this->generator);
