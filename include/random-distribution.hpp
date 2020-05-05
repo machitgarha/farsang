@@ -73,7 +73,7 @@ namespace Gsler
             using RandomDistribution::RandomDistribution;
 
             // Uses default Mu
-            virtual UInt get() const noexcept final;
+            virtual UInt get() const final;
             virtual UInt get(Mu) const noexcept final;
     };
 }
