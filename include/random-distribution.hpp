@@ -69,8 +69,10 @@ namespace Gsler
             using RandomDistribution::RandomDistribution;
 
             // Uses default sigma
-            virtual Double get() const noexcept final;
+            virtual Double get() const final;
             virtual Double get(Sigma) const noexcept final;
+
+            const GaussianDistribution &operator>>(Double &) const;
     };
 
     class GammaDistribution: public RandomDistribution<std::tuple<double, double>>
