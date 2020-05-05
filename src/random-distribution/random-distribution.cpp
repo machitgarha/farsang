@@ -40,9 +40,11 @@ bool RandomDistribution<ParamType>::isParamSet() const noexcept
 }
 
 template<typename ParamType>
-RandomDistribution<ParamType> &RandomDistribution<ParamType>::setParam(ParamType p) noexcept
+RandomDistribution<ParamType> &RandomDistribution<ParamType>::setParam(ParamType param)
+    noexcept
 {
-    this->param = p;
+    this->_isParamSet = true;
+    this->param = param;
     return *this;
 }
 

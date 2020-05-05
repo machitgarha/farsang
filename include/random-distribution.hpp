@@ -36,102 +36,44 @@ namespace Gsler
             ParamType param;
     };
 
-    class GaussianDistribution: public RandomDistribution
+    class GaussianDistribution: public RandomDistribution<double>
     {
         public:
             using Sigma = Double;
 
             GaussianDistribution() = delete;
-            GaussianDistribution(const RandomGenerator &, Sigma);
-
             using RandomDistribution::RandomDistribution;
 
             // Uses default sigma
             virtual Double get() const noexcept final;
             virtual Double get(Sigma) const noexcept final;
-
-            virtual inline Sigma getParamSigma() const noexcept final
-            {
-                return this->sigma;
-            }
-            virtual inline void setParamSigma(Sigma sigma) noexcept final
-            {
-                this->sigma = sigma;
-            }
-
-        private:
-            // Defaults to unit Gaussian distribution
-            Sigma sigma = 1.0;
     };
 
-    class GammaDistribution: public RandomDistribution
+    class GammaDistribution: public RandomDistribution<std::tuple<double, double>>
     {
         public:
             using A = Double;
             using B = Double;
 
             GammaDistribution() = delete;
-            GammaDistribution(const RandomGenerator &, A, B);
-
             using RandomDistribution::RandomDistribution;
 
             // Uses default a and b
             virtual Double get() const final;
             virtual Double get(A, B) const noexcept final;
-
-            virtual inline A getParamA() const final
-            {
-                if (!this->isParamASet) {
-                    throw Exception::Exception("Parameter A is not set");
-                }
-                return this->a;
-            }
-            virtual inline GammaDistribution &setParamA(A a) noexcept final
-            {
-                this->a = a;
-                this->isParamASet = true;
-                return *this;
-            }
-            virtual inline bool isSetParamA() const noexcept final
-            {
-                return this->isParamASet;
-            }
-
-            virtual inline B getParamB() const final
-            {
-                if (!this->isParamBSet) {
-                    throw Exception::Exception("Parameter B is not set");
-                }
-                return this->b;
-            }
-            virtual inline GammaDistribution &setParamB(B b) noexcept final
-            {
-                this->b = b;
-                this->isParamBSet = true;
-                return *this;
-            }
-            virtual inline bool isSetParamB() const noexcept final
-            {
-                return this->isParamBSet;
-            }
-
-        private:
-            A a;
-            B b;
-            bool isParamASet = false;
-            bool isParamBSet = false;
+            virtual Double get(std::tuple<A, B>) const noexcept final;
     };
 
-    class PoissonDistribution: public RandomDistribution
+    class PoissonDistribution: public RandomDistribution<double>
     {
         public:
             using Mu = Double;
 
             PoissonDistribution() = delete;
-            PoissonDistribution(const RandomGenerator &, Mu);
-
             using RandomDistribution::RandomDistribution;
 
+            // Uses default Mu
+            virtual UInt get() const noexcept final;
             virtual UInt get(Mu) const noexcept final;
     };
 }
