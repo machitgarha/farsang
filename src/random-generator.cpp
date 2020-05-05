@@ -1,7 +1,5 @@
 #include "random-generator.hpp"
 
-#include <gsl/gsl_errno.h>
-
 using namespace Gsler;
 
 const RandomGenerator::GeneratorType *const RandomGenerator::borosh13 =
@@ -299,7 +297,6 @@ void RandomGenerator::setDefaultGeneratorType(const GeneratorType *e) noexcept
 {
     RandomGenerator::defaultGeneratorType = e;
 }
-
 
 void RandomGenerator::free() noexcept
 {
