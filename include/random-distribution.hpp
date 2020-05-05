@@ -1,27 +1,39 @@
 #ifndef GSLER_RANDOM_DISTRIBUTION_INC
 #define GSLER_RANDOM_DISTRIBUTION_INC
 
+#include <tuple>
 #include "random-generator.hpp"
 #include "exception.hpp"
 
 namespace Gsler
 {
+    template<typename ParamType>
     class RandomDistribution
     {
         public:
+            using ParamName = std::string;
             using Double = double;
             using UInt = unsigned int;
 
             RandomDistribution() = delete;
             RandomDistribution(const RandomGenerator &);
+            RandomDistribution(const RandomGenerator &, ParamType);
 
             // Only for making class abstract
             virtual ~RandomDistribution() = 0;
+
+            // Parameter handling
+            ParamType getParam() const;
+            bool isParamSet() const noexcept;
+            RandomDistribution &setParam(ParamType) noexcept;
 
             virtual const RandomGenerator &getGenerator() const noexcept final;
 
         private:
             const RandomGenerator &generator;
+
+            bool _isParamSet = false;
+            ParamType param;
     };
 
     class GaussianDistribution: public RandomDistribution
@@ -113,10 +125,14 @@ namespace Gsler
     class PoissonDistribution: public RandomDistribution
     {
         public:
+            using Mu = Double;
+
             PoissonDistribution() = delete;
+            PoissonDistribution(const RandomGenerator &, Mu);
+
             using RandomDistribution::RandomDistribution;
 
-            virtual UInt get(Double) const noexcept final;
+            virtual UInt get(Mu) const noexcept final;
     };
 }
 
