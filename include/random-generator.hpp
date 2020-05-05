@@ -100,8 +100,6 @@ namespace Gsler
 
             Seed getSeed() const noexcept;
 
-            // TODO: Add getter for generator type
-
             ULong generate() const noexcept;
 
             ULong generateUniform(Max) const noexcept;
