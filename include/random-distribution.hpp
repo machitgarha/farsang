@@ -30,6 +30,15 @@ namespace Gsler
 
             virtual Double get(Double = 1) const noexcept;
     };
+
+    class GammaDistribution: public RandomDistribution
+    {
+        public:
+            GammaDistribution() = delete;
+            using RandomDistribution::RandomDistribution;
+
+            virtual Double get(Double, Double) const noexcept;
+    };
 }
 
 #endif // GSLER_RANDOM_DISTRIBUTION_INC
