@@ -26,9 +26,6 @@ namespace Gsler
             {
             }
 
-            // Only for making class abstract
-            virtual ~RandomDistribution() = 0;
-
             // Parameter handling
             inline ParamType getParam() const
             {
