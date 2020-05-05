@@ -103,6 +103,8 @@ namespace Gsler
             // Uses default Mu
             virtual UInt get() const final;
             virtual UInt get(Mu) const noexcept final;
+
+            const PoissonDistribution &operator>>(UInt &) const;
     };
 }
 

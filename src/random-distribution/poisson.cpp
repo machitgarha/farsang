@@ -16,3 +16,9 @@ PoissonDistribution::UInt PoissonDistribution::get(Mu mu) const noexcept
 {
     return gsl_ran_poisson(this->getGenerator().getGenerator(), mu);
 }
+
+const PoissonDistribution &PoissonDistribution::operator>>(UInt &result) const
+{
+    result = this->get();
+    return *this;
+}
