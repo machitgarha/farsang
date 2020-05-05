@@ -9,9 +9,10 @@ namespace Gsler
     {
         public:
             RandomDistribution() = delete;
-            ~RandomDistribution() = delete;
-
             RandomDistribution(const RandomGenerator &);
+
+            // Only for making class abstract
+            virtual ~RandomDistribution() = 0;
 
             virtual const RandomGenerator &getGenerator() const noexcept final;
 

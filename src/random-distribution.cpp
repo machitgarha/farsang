@@ -7,6 +7,10 @@ RandomDistribution::RandomDistribution(const RandomGenerator &rGenerator):
 {
 }
 
+RandomDistribution::~RandomDistribution()
+{
+}
+
 const RandomGenerator &RandomDistribution::getGenerator() const noexcept
 {
     return this->generator;
