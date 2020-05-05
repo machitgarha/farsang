@@ -20,11 +20,6 @@ namespace Gsler
                 generator(rGenerator)
             {
             }
-            RandomDistribution(const RandomGenerator &rGenerator, ParamType param):
-                generator(rGenerator),
-                param(param)
-            {
-            }
 
             // Parameter handling
             inline ParamType getParam() const

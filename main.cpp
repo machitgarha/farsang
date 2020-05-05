@@ -42,10 +42,11 @@ int main()
 
     RandomGenerator r2(RandomGenerator::taus, time(0));
 
-    GaussianDistribution gaDist(r2, 1);
+    GaussianDistribution gaDist(r2);
+    gaDist.setParam(1);
 
     cout << endl;
-    cout << "A sample Gaussian distribution: " << gaDist.get(1) << endl;
+    cout << "A sample Gaussian distribution: " << gaDist.get() << endl;
     cout << "Information:" << endl;
     cout << "Random generator:" << endl;
     cout << "Name: " << r2.getName() << endl;
