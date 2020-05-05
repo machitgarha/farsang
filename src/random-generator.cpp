@@ -1,6 +1,9 @@
 #include "random-generator.hpp"
 
+#include "exception.hpp"
+
 using namespace Gsler;
+using namespace Gsler::Exception;
 
 const RandomGenerator::GeneratorType *const RandomGenerator::borosh13 =
     gsl_rng_borosh13;
@@ -223,6 +226,7 @@ RandomGenerator &RandomGenerator::seed(const Seed seed)
 
 RandomGenerator &RandomGenerator::fileRead(FILE *f)
 {
+    // TODO: Rethrow Exception as FileReadException
     gsl_rng_fread(f, this->generator);
 
     return *this;
@@ -239,7 +243,7 @@ RandomGenerator &RandomGenerator::fileRead(std::ifstream &f)
             throw std::ios_base::failure("Could not read from file");
         }
     } catch (std::ios_base::failure &e) {
-        // TODO: Implement this after creating an error handler
+        throw FileReadException(e.what(), e.code().value());
     }
 
     return *this;
@@ -247,6 +251,7 @@ RandomGenerator &RandomGenerator::fileRead(std::ifstream &f)
 
 const RandomGenerator &RandomGenerator::fileWrite(FILE *f) const
 {
+    // TODO: Rethrow Exception as FileWriteException
     gsl_rng_fwrite(f, this->generator);
 
     return *this;
@@ -263,7 +268,7 @@ const RandomGenerator &RandomGenerator::fileWrite(std::ofstream &f) const
             throw std::ios_base::failure("Could not write to file");
         }
     } catch (std::ios_base::failure &e) {
-        // TODO: Implement this after creating an error handler
+        throw FileWriteException(e.what(), e.code().value());
     }
 
     return *this;
