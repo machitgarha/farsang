@@ -278,6 +278,7 @@ void RandomGenerator::setupEnvironment()
 
     // Update static variables
     RandomGenerator::setDefaultSeed(gsl_rng_default_seed);
+    RandomGenerator::setDefaultGeneratorType(gsl_rng_default);
 }
 
 RandomGenerator::Seed RandomGenerator::getDefaultSeed() noexcept(true)
