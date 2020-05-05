@@ -79,9 +79,7 @@ namespace Gsler
         /**
          * Exceptions in which are mostly a base for other exceptions.
          * These exceptions, generally, have no POSIX-compatible error code.
-         * Sorted by:
-         *  1. First, ones which have POSIX-compatible error code, then the rest.
-         *  2. Inside the groups, being parent of more exception classes.
+         * Sorted by general number of uses (don't try to be precise).
          */
 
         class LogicException: public Exception
@@ -112,6 +110,18 @@ namespace Gsler
                 ArithmeticException(ArithmeticException &&) = default;
 
                 using RuntimeException::RuntimeException;
+        };
+
+        class IOException: public RuntimeException
+        {
+            public:
+                IOException() = delete;
+                IOException(const IOException &) = default;
+                IOException(IOException &&) = default;
+
+                using RuntimeException::RuntimeException;
+
+                virtual inline Code getDefaultCode() const noexcept { return 5; }
         };
 
         /*
@@ -238,6 +248,26 @@ namespace Gsler
                 DivisionByZeroException(DivisionByZeroException &&) = default;
 
                 using ArithmeticException::ArithmeticException;
+        };
+
+        class FileReadException: public IOException
+        {
+            public:
+                FileReadException() = delete;
+                FileReadException(const FileReadException &) = default;
+                FileReadException(FileReadException &&) = default;
+
+                using IOException::IOException;
+        };
+
+        class FileWriteException: public IOException
+        {
+            public:
+                FileWriteException() = delete;
+                FileWriteException(const FileWriteException &) = default;
+                FileWriteException(FileWriteException &&) = default;
+
+                using IOException::IOException;
         };
     }
 }
