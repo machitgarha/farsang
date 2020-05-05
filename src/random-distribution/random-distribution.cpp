@@ -2,9 +2,6 @@
 
 using namespace Gsler;
 
-template class Gsler::RandomDistribution<double>;
-template class Gsler::RandomDistribution<std::tuple<double, double>>;
-
 template<typename ParamType>
 RandomDistribution<ParamType>::RandomDistribution(const RandomGenerator &rGenerator):
     generator(rGenerator)

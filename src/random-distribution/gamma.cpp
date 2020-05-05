@@ -4,23 +4,21 @@
 
 using namespace Gsler;
 
-GammaDistribution::GammaDistribution(const RandomGenerator &rGenerator, A a, B b):
-    RandomDistribution(rGenerator)
-{
-    this->setParamA(a);
-    this->setParamB(b);
-}
+template class Gsler::RandomDistribution<std::tuple<double, double>>;
 
 GammaDistribution::Double GammaDistribution::get() const
 {
-    if (!this->isParamASet || !this->isParamBSet) {
-        throw Exception::Exception("Parameter a or b has not been set");
-    }
-
-    return gsl_ran_gamma(this->getGenerator().getGenerator(), this->a, this->b);
+    return gsl_ran_gamma(this->getGenerator().getGenerator(),
+        std::get<0>(this->getParam()), std::get<1>(this->getParam()));
 }
 
 GammaDistribution::Double GammaDistribution::get(A a, B b) const noexcept
 {
     return gsl_ran_gamma(this->getGenerator().getGenerator(), a, b);
+}
+
+GammaDistribution::Double GammaDistribution::get(std::tuple<A, B> t) const noexcept
+{
+    return gsl_ran_gamma(this->getGenerator().getGenerator(),
+        std::get<0>(t), std::get<1>(t));
 }
