@@ -135,7 +135,6 @@ RandomGenerator::RandomGenerator():
     generatorType(gsl_rng_default),
     generator(this->allocate(this->generatorType))
 {
-    // Implicit error checking in allocate()
 }
 
 RandomGenerator::RandomGenerator(const Seed seed):
@@ -143,15 +142,12 @@ RandomGenerator::RandomGenerator(const Seed seed):
     generator(this->allocate(this->generatorType))
 {
     this->seed(seed);
-
-    // Implicit error checking in allocate()
 }
 
 RandomGenerator::RandomGenerator(const GeneratorType *gType):
     generatorType(gType),
     generator(this->allocate(this->generatorType))
 {
-    // Implicit error checking in allocate()
 }
 
 RandomGenerator::RandomGenerator(const GeneratorType *gType, const Seed seed):
@@ -159,15 +155,12 @@ RandomGenerator::RandomGenerator(const GeneratorType *gType, const Seed seed):
     generator(this->allocate(this->generatorType))
 {
     this->seed(seed);
-
-    // Implicit error checking in allocate()
 }
 
 RandomGenerator::RandomGenerator(const RandomGenerator &r):
     generatorType(r.generatorType),
     generator(this->clone(r.generator))
 {
-    // Implicit error checking in allocate()
 }
 
 RandomGenerator::~RandomGenerator()
