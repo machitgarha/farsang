@@ -12,6 +12,7 @@ namespace Gsler
     {
         public:
             using ULong = unsigned long int;
+            using Min = ULong;
             using Max = ULong;
             using Seed = ULong;
             using Double = double;
@@ -101,6 +102,7 @@ namespace Gsler
             Seed getSeed() const noexcept;
 
             ULong generate() const noexcept;
+            ULong generate(const Min, const Max) const;
 
             ULong generateUniform(Max) const noexcept;
             Double generateUniform() const noexcept;

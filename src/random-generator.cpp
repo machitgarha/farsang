@@ -199,6 +199,16 @@ RandomGenerator::ULong RandomGenerator::generate() const noexcept
     return gsl_rng_get(this->generator);
 }
 
+RandomGenerator::ULong RandomGenerator::generate(const Min min, const Max max) const
+{
+    if (min >= max) {
+        throw InvalidArgumentException("Min is not lower than max");
+    }
+
+    return (this->generate() % (max - min + 1)) + min;
+}
+
+
 RandomGenerator::ULong RandomGenerator::generateUniform(Max max) const noexcept
 {
     return gsl_rng_uniform_int(this->generator, max);
