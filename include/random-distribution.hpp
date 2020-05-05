@@ -26,10 +26,29 @@ namespace Gsler
     class GaussianDistribution: public RandomDistribution
     {
         public:
+            using Sigma = Double;
+
             GaussianDistribution() = delete;
+            GaussianDistribution(const RandomGenerator &, Sigma);
+
             using RandomDistribution::RandomDistribution;
 
-            virtual Double get(Double = 1) const noexcept final;
+            // Uses default sigma
+            virtual Double get() const noexcept final;
+            virtual Double get(Sigma) const noexcept final;
+
+            virtual inline Sigma getParamSigma() const noexcept final
+            {
+                return this->sigma;
+            }
+            virtual inline void setParamSigma(Sigma sigma) noexcept final
+            {
+                this->sigma = sigma;
+            }
+
+        private:
+            // Defaults to unit Gaussian distribution
+            Sigma sigma = 1.0;
     };
 
     class GammaDistribution: public RandomDistribution
