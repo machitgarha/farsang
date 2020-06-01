@@ -4,9 +4,7 @@
 
 ### Template Instantiation Linker Error
 
-In RandomDistribution class and its children (e.g. PoissonDistribution class), there is a linking error, which all base class methods must be defined in child classes.
-
-You can review this issue in `issue-template-linker-error` branch.
+In RandomDistribution class and its children (e.g. PoissonDistribution class), there is a linking error. You can review this issue in `issue-template-linker-error` branch.
 
 #### Fixes
 
