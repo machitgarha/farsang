@@ -1,5 +1,22 @@
 # Gsler
 
+## Build
+
+### Requirements
+
+-   CMake
+-   Make
+-   G++
+
+To build:
+
+```
+cmake . -B build
+make -C build
+```
+
+**Note**: The recommended build directory is `build`, as it's ignored by the VCS.
+
 ## Known Issues
 
 ### Template Instantiation Linker Error
