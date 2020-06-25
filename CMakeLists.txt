@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 
+# Set include and library path for OS X
+if (APPLE)
+    link_directories(/usr/local/lib)
+    set(USER_INCLUDE /usr/local/include)
+endif()
+
 project(Gsler)
 
 # Standards
@@ -22,4 +28,8 @@ target_link_libraries(
 )
 
 # Includes
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(
+    ${PROJECT_NAME} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${USER_INCLUDE}
+)
