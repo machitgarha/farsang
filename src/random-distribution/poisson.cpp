@@ -4,8 +4,6 @@
 
 using namespace Gsler;
 
-template class Gsler::RandomDistribution<double>;
-
 PoissonDistribution::UInt PoissonDistribution::get() const
 {
     // If param is not set, an exception will be thrown by RandomDistribution::getParam()

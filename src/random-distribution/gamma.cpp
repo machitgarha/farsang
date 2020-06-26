@@ -4,8 +4,6 @@
 
 using namespace Gsler;
 
-template class Gsler::RandomDistribution<std::tuple<double, double>>;
-
 GammaDistribution::Double GammaDistribution::get() const
 {
     // If param is not set, an exception will be thrown by RandomDistribution::getParam()

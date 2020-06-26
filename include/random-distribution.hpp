@@ -36,6 +36,10 @@ namespace Gsler
             ParamType param;
     };
 
+    // Explicit instantiations
+    template class Gsler::RandomDistribution<double>;
+    template class Gsler::RandomDistribution<std::tuple<double, double>>;
+
     class GaussianDistribution: public RandomDistribution<double>
     {
         public:

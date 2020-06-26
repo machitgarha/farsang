@@ -4,8 +4,6 @@
 
 using namespace Gsler;
 
-template class Gsler::RandomDistribution<double>;
-
 GaussianDistribution::Double GaussianDistribution::get() const noexcept
 {
     // If param is not set, an exception will be thrown by RandomDistribution::getParam()
