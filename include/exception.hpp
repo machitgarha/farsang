@@ -2,7 +2,6 @@
 #define GSLER_EXCEPTION_INC
 
 #include <stdexcept>
-#include <asm-generic/errno-base.h>
 
 #define EXCEPTION(...)\
     Gsler::Exception::Exception(__VA_ARGS__, __FILE__, __LINE__)
