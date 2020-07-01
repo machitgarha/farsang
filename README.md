@@ -1,6 +1,6 @@
 # Farsang
 
-C++ wrapper for GSL (i.e. GNU Scientific Library).
+GSL (i.e. GNU Scientific Library) with C++ taste, with classes and exceptions in mind.
 
 ## Implemented
 
