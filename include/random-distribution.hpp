@@ -53,6 +53,19 @@ namespace Gsler
             virtual Double get(Sigma) const noexcept final;
     };
 
+    class PoissonDistribution: public RandomDistribution<double>
+    {
+        public:
+            using Mu = Double;
+
+            PoissonDistribution() = delete;
+            using RandomDistribution::RandomDistribution;
+
+            // Uses default Mu
+            virtual UInt get() const final;
+            virtual UInt get(Mu) const noexcept final;
+    };
+
     class GammaDistribution: public RandomDistribution<std::tuple<double, double>>
     {
         public:
@@ -66,19 +79,6 @@ namespace Gsler
             virtual Double get() const final;
             virtual Double get(A, B) const noexcept final;
             virtual Double get(std::tuple<A, B>) const noexcept final;
-    };
-
-    class PoissonDistribution: public RandomDistribution<double>
-    {
-        public:
-            using Mu = Double;
-
-            PoissonDistribution() = delete;
-            using RandomDistribution::RandomDistribution;
-
-            // Uses default Mu
-            virtual UInt get() const final;
-            virtual UInt get(Mu) const noexcept final;
     };
 }
 
