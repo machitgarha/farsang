@@ -6,7 +6,10 @@ if (APPLE)
     set(USER_INCLUDE /usr/local/include)
 endif()
 
-project(Farsang)
+project(
+    Farsang
+    DESCRIPTION "GSL (i.e. GNU Scientific Library) with C++ taste"
+)
 
 # Standards
 set(CMAKE_CXX_STANDARD 14)
