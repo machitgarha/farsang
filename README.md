@@ -75,3 +75,7 @@ Farsang is a historical unit of distance in Iran.
 ### A tiny history?
 
 As a result of a university homework, this project was created.
+
+### PHP here?
+
+Yes: For the automation of creating exception classes, there is a simple PHP script included in this project. Using something saving your time is always good. 
