@@ -1,5 +1,7 @@
 # Farsang
 
+![Release](https://img.shields.io/github/v/release/machitgarha/farsang?label=Release&style=flat-square)
+
 GSL (i.e. GNU Scientific Library) with C++ taste.
 
 Farsang is a C++ wrapper for GSL, with classes and exceptions in mind.
