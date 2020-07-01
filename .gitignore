@@ -1,5 +1,7 @@
-# Build, executables
+# Build directory
 build/
+
+# Executables
 a.out
 a.exe
 
