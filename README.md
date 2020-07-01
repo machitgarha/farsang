@@ -1,6 +1,15 @@
 # Farsang
 
-C++ wrapper for GSL (i.e. GNU Scientific Library). Keep in mind, classes look better than pure functions.
+C++ wrapper for GSL (i.e. GNU Scientific Library).
+
+## Implemented
+
+-   Exception mechanism
+-   Random generators
+-   Random Distributions
+    -   Gamma
+    -   Gaussin
+    -   Poisson
 
 ## Build
 
