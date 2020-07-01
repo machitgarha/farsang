@@ -1,6 +1,8 @@
 # Farsang
 
-GSL (i.e. GNU Scientific Library) with C++ taste, with classes and exceptions in mind.
+GSL (i.e. GNU Scientific Library) with C++ taste.
+
+Farsang is a C++ wrapper for GSL, with classes and exceptions in mind.
 
 ## Implemented
 
@@ -63,3 +65,13 @@ Consider these as first things to contribute:
 ## License
 
 Well, just like GSL itself, Farsang is under [GPLv3](./LICENSE.md).
+
+## Miscellaneous
+
+### Naming?
+
+Farsang is a historical unit of distance in Iran.
+
+### A tiny history?
+
+As a result of a university homework, this project was created.
