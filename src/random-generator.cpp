@@ -2,8 +2,8 @@
 
 #include "exception.hpp"
 
-using namespace Gsler;
-using namespace Gsler::Exception;
+using namespace Farsang;
+using namespace Farsang::Exception;
 
 const RandomGenerator::GeneratorType *const RandomGenerator::borosh13 =
     gsl_rng_borosh13;
@@ -341,25 +341,25 @@ RandomGenerator::Generator *RandomGenerator::clone(const Generator *g)
 
 // Class-independent stuff
 
-FILE *Gsler::operator>>(FILE *f, RandomGenerator &rGenerator)
+FILE *Farsang::operator>>(FILE *f, RandomGenerator &rGenerator)
 {
     rGenerator.fileRead(f);
     return f;
 }
 
-std::ifstream &Gsler::operator>>(std::ifstream &f, RandomGenerator &rGenerator)
+std::ifstream &Farsang::operator>>(std::ifstream &f, RandomGenerator &rGenerator)
 {
     rGenerator.fileRead(f);
     return f;
 }
 
-FILE *Gsler::operator<<(FILE *f, RandomGenerator &rGenerator)
+FILE *Farsang::operator<<(FILE *f, RandomGenerator &rGenerator)
 {
     rGenerator.fileWrite(f);
     return f;
 }
 
-std::ofstream &Gsler::operator<<(std::ofstream &f, RandomGenerator &rGenerator)
+std::ofstream &Farsang::operator<<(std::ofstream &f, RandomGenerator &rGenerator)
 {
     rGenerator.fileWrite(f);
     return f;

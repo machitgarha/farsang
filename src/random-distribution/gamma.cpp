@@ -2,7 +2,7 @@
 
 #include <gsl/gsl_randist.h>
 
-using namespace Gsler;
+using namespace Farsang;
 
 GammaDistribution::Double GammaDistribution::get() const
 {

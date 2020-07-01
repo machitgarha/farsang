@@ -1,12 +1,12 @@
-#ifndef GSLER_RANDOM_GERERATOR_INC
-#define GSLER_RANDOM_GERERATOR_INC
+#ifndef FARSANG_RANDOM_GERERATOR_INC
+#define FARSANG_RANDOM_GERERATOR_INC
 
 #include <string>
 #include <fstream>
 #include <gsl/gsl_rng.h>
 #include "error-handler.hpp"
 
-namespace Gsler
+namespace Farsang
 {
     class RandomGenerator
     {
@@ -151,4 +151,4 @@ namespace Gsler
     std::ofstream &operator<<(std::ofstream &, RandomGenerator &);
 }
 
-#endif // GSLER_RANDOM_GERERATOR_INC
+#endif // FARSANG_RANDOM_GERERATOR_INC

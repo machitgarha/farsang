@@ -1,9 +1,9 @@
-#ifndef GSLER_ERROR_HANDLER_INC
-#define GSLER_ERROR_HANDLER_INC
+#ifndef FARSANG_ERROR_HANDLER_INC
+#define FARSANG_ERROR_HANDLER_INC
 
 #include <gsl/gsl_errno.h>
 
-namespace Gsler
+namespace Farsang
 {
     class ErrorHandler
     {
@@ -37,4 +37,4 @@ namespace Gsler
     };
 }
 
-#endif // GSLER_ERROR_HANDLER_INC
+#endif // FARSANG_ERROR_HANDLER_INC

@@ -1,6 +1,6 @@
 #include "random-distribution.hpp"
 
-using namespace Gsler;
+using namespace Farsang;
 
 template<typename ParamType>
 RandomDistribution<ParamType>::RandomDistribution(const RandomGenerator &rGenerator):

@@ -2,8 +2,8 @@
 
 #include "exception.hpp"
 
-using namespace Gsler;
-using namespace Gsler::Exception;
+using namespace Farsang;
+using namespace Farsang::Exception;
 
 bool ErrorHandler::toShowLocation = true;
 

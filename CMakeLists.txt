@@ -6,7 +6,7 @@ if (APPLE)
     set(USER_INCLUDE /usr/local/include)
 endif()
 
-project(Gsler)
+project(Farsang)
 
 # Standards
 set(CMAKE_CXX_STANDARD 11)

@@ -1,11 +1,11 @@
-#ifndef GSLER_RANDOM_DISTRIBUTION_INC
-#define GSLER_RANDOM_DISTRIBUTION_INC
+#ifndef FARSANG_RANDOM_DISTRIBUTION_INC
+#define FARSANG_RANDOM_DISTRIBUTION_INC
 
 #include <tuple>
 #include "random-generator.hpp"
 #include "exception.hpp"
 
-namespace Gsler
+namespace Farsang
 {
     template<typename ParamType>
     class RandomDistribution
@@ -37,8 +37,8 @@ namespace Gsler
     };
 
     // Explicit instantiations
-    template class Gsler::RandomDistribution<double>;
-    template class Gsler::RandomDistribution<std::tuple<double, double>>;
+    template class Farsang::RandomDistribution<double>;
+    template class Farsang::RandomDistribution<std::tuple<double, double>>;
 
     class GaussianDistribution: public RandomDistribution<double>
     {
@@ -82,4 +82,4 @@ namespace Gsler
     };
 }
 
-#endif // GSLER_RANDOM_DISTRIBUTION_INC
+#endif // FARSANG_RANDOM_DISTRIBUTION_INC

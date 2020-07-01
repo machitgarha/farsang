@@ -1,19 +1,19 @@
-#ifndef GSLER_EXCEPTION_INC
-#define GSLER_EXCEPTION_INC
+#ifndef FARSANG_EXCEPTION_INC
+#define FARSANG_EXCEPTION_INC
 
 #include <stdexcept>
 
 #define EXCEPTION(...)\
-    Gsler::Exception::Exception(__VA_ARGS__, __FILE__, __LINE__)
+    Farsang::Exception::Exception(__VA_ARGS__, __FILE__, __LINE__)
 #define LOGIC_EXCEPTION(...)\
-    Gsler::Exception::LogicException(__VA_ARGS__, __FILE__, __LINE__)
+    Farsang::Exception::LogicException(__VA_ARGS__, __FILE__, __LINE__)
 
-namespace Gsler
+namespace Farsang
 {
     namespace Exception
     {
         /**
-         * Base exception of all Gsler exceptions.
+         * Base exception of all Farsang exceptions.
          * TODO: Add comments here.
          */
         class Exception: public std::exception
@@ -271,4 +271,4 @@ namespace Gsler
     }
 }
 
-#endif // GSLER_EXCEPTION_INC
+#endif // FARSANG_EXCEPTION_INC

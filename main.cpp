@@ -2,7 +2,7 @@
 #include "random-distribution.hpp"
 
 using namespace std;
-using namespace Gsler;
+using namespace Farsang;
 
 int main()
 {

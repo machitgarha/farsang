@@ -1,6 +1,6 @@
 #include "exception.hpp"
 
-using namespace Gsler::Exception;
+using namespace Farsang::Exception;
 
 const Exception::Path Exception::PATH_UNKNOWN = nullptr;
 const Exception::Line Exception::LINE_UNKNOWN = -1;
