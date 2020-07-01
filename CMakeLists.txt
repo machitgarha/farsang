@@ -12,15 +12,19 @@ project(Farsang)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
-# Executables
-file(GLOB_RECURSE SRC_FILES src/*.cpp)
-add_executable(
-    ${PROJECT_NAME}
-    main.cpp
-    ${SRC_FILES}
+# Source files
+add_library(
+    ${PROJECT_NAME} SHARED
+    src/error-handler.cpp
+    src/exception.cpp
+    src/random-generator.cpp
+    src/random-distribution/gamma.cpp
+    src/random-distribution/gaussian.cpp
+    src/random-distribution/poisson.cpp
+    src/random-distribution/random-distribution.cpp
 )
 
-# Shared
+# GSL
 target_link_libraries(
     ${PROJECT_NAME}
     gsl
